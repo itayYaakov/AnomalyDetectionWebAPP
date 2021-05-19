@@ -1,0 +1,99 @@
+special containers:
+
+confings = {
+			"11581578175" : {
+				"algorithm" : "hybrid",
+				"threshold" : 0.8,
+				"time" : 100000000
+				"trainFileName" : "train.csv",
+				"testFileName" : "test.csv"
+			},
+
+			"16839839589" : {
+				"algorithm" : "regression",
+				"threshold" : 0.95,
+				"time" : 20000000000
+				"trainFileName" : "train2.csv",
+				"testFileName" : "test2.csv"
+			},
+
+			...
+		}
+
+files = {
+			"11581578175" : {
+				"trainFile" : TrainCSVjson,
+				"testFile" : TestCSVjson,
+				"anomalies" : <anomalies_json>
+			},
+
+			"16839839589" : {
+				"trainFile" : TrainCSVjson2,
+				"testFile" : TestCSVjson2,
+				"anomalies" : <anomalies_json>
+			},
+
+			...
+		}
+
+=================================================
+
+request:
+	path: '/'
+	parameters: <none>
+	body: <none>
+
+response:
+	index.html webpage
+
+-------------------------------------------------
+
+request:
+	path: '/detect'
+	parameters: algorithm, threshold, time, trainFileName, testFileName
+	body: { "train" : TrainCSV, "test" : TestCSV }
+
+response:
+	json anomalies object - 
+	{
+		"id" : 11581578175,
+		"anomalies" : [
+			{
+				"col_1" : "A",
+				"col_2" : "B",
+				"data" : [1, 2, 4, 5, 19, 20]
+			}
+		]
+	}
+
+additional actions made:
+	- saving to configs json
+	- saving to files json
+		
+
+-------------------------------------------------
+
+request:
+	path: '/reportsConfigHistory'
+	parameters: <none>
+	body <none>
+
+response:
+	configs json.
+
+-------------------------------------------------
+
+request:
+	path: '/reportData'
+	parameters: id, type (== train\test\result)
+	body: <none>
+
+response:
+	type == train:
+		files[id]['trainFile']
+	type == test:
+		files[id]['testFile']
+	type == result:
+		files[id]['anomalies']
+
+-------------------------------------------------
