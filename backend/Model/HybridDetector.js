@@ -18,7 +18,7 @@ class HybridDetector extends reg.RegressionDetector{
     learnNormal(json) {
         super.learnNormal(json);
         for (var c of this.cf) {
-            if (c.correlation > 0.5 && c.correlation < 0.9) {
+            if (c.correlation > this.threshold && c.correlation < 0.9) {
                 c.circle = makeCircle(super.makePoints(json, c.feature1, c.feature2))
                 c.circle.r *= 1.1
             }

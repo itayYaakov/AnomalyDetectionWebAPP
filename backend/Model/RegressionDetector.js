@@ -63,7 +63,7 @@ class RegressionDetector{
         c.correlation = correlation
         if (f2 !== null) {
             var points = this.makePoints(json, f1 ,f2)
-            if (c.correlation >= 0.9) {
+            if (c.correlation >= this.threshold) {
                 c.line = util.linear_reg(points)
                 c.threshold = this.findThreshold(c.line, points) * 1.1
             }
@@ -91,7 +91,7 @@ class RegressionDetector{
 
 
 
-    detect(json, time) {
+    detect(json, id) {
         var anomalies = []
         for (var c of this.cf) {
             if (c.feature2 === null) continue
@@ -109,24 +109,9 @@ class RegressionDetector{
             }
             anomalies.push(cf)
         }
-        return { 'anomalies' : anomalies, 'epoch' : time }
+        return { 'id' : id, 'anomalies' : anomalies }
     }
 
-    /*detect(json) {
-        var anomalies = {}
-        for (var c of this.cf) {
-            if (c.feature2 === null) continue
-            anomalies[c.feature1 + '-' + c.feature2] = []
-            for (var i = 0; i < json[Object.keys(json)[0]].length; i++) {
-                var xs = json[c.feature1]
-                var ys = json[c.feature2]
-                if(this.isAnomaly(xs[i], ys[i], c)) {
-                    anomalies[c.feature1 + '-' + c.feature2].push(i)
-                }
-            }
-        }
-        return anomalies
-    }*/
 }
 
 
