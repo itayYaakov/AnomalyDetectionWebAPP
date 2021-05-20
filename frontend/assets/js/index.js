@@ -14,9 +14,7 @@ const getParams = match => {
 };
 
 const navigateTo = url => {
-    console.log("before history push state location.pathname=", location.pathname);
     history.pushState(null, null, url);
-    console.log("after history push state location.pathname=", location.pathname);
     router();
 };
 
@@ -42,17 +40,13 @@ const router = async() => {
         match = {
             route: routes[0],
             result: [location.pathname]
-        };
-        console.log("default match for location.pathname= ", location.pathname, " match.route.path= ", match.route.path);
-    } else {
-        console.log("found match for location.pathname= ", location.pathname, " match.route.path= ", match.route.path);
-    }
+        };  }
 
     const view = new match.route.view(getParams(match));
+    const route_url = view.getHtml();
 
-    console.log("redirect tp", view.getHtml());
     $("#content").html('');
-    $("#content").load(view.getHtml());
+    $("#content").load(route_url);
 };
 
 window.addEventListener("popstate", router);
@@ -67,10 +61,3 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 router();
-// document.addEventListener("DOMContentLoaded", () => {
-//     document.body.addEventListener("click", e => {
-//         if (e.target.matches("[nav-link]")) {
-//             e.preventDefault();
-//             navigateTo(e.target.href);
-//         }
-//     });
