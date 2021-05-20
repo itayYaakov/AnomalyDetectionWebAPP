@@ -1,0 +1,44 @@
+.nav-link:hover {
+  background-color: var(--material-color-teal-700);
+}
+
+.nav-link.active {
+  background-color: var(--material-color-teal-400);
+  box-shadow: 0 1px 15px 1px rgba(39,39,39,.2);
+  border-style: solid;
+  border-width: thin;
+  border-color: var(--material-color-teal-400);
+}
+
+.sidebar .nav-item .nav-link {
+  border-radius: 1.8rem;
+  display: block;
+  width: auto;
+  margin: 0 .6em .6em;
+}
+
+.sidebar.toggled .nav-item .nav-link {
+  text-align: center;
+  padding: .75rem 1rem;
+  width: 5.5rem;
+  font-size: .65rem;
+}
+
+.navbar.navbar-dark.sidebar.sidebar-dark.accordion.bg-gradient-primary {
+  color: var(--light);
+  background: var(--material-color-teal-800);
+}
+
+.btn-check {
+  position: absolute;
+  clip: rect(0,0,0,0);
+  pointer-events: none;
+}
+
+.list-group-item.active {
+  z-index: 2 !important;
+  color: var(--color-text-primary) !important;
+  background-color: var(--material-color-teal-800) !important;
+  border-color: var(--material-color-teal-a200) !important;
+}
+

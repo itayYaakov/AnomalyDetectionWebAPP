@@ -1,0 +1,63 @@
+.dashed_upload {
+  height: 11em;
+  display: inline-block;
+}
+
+.drop-zone {
+  position: inherit;
+  border: 0.15em dashed #DADFE3;
+  border-radius: 0.2em;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+  background: transparent;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  margin: auto;
+}
+
+.drop-zone .cont {
+  padding: 2%;
+  color: #8E99A5;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.drop-zone--over {
+  border-style: solid;
+  border-width: 0.2em;
+  background-color: rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.drop-zone__input {
+  display: none;
+}
+
+.drop-zone__thumb {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #cccccc;
+  background-size: cover;
+  position: relative;
+}
+
+.drop-zone__thumb > label {
+  position: relative;
+  top: 0.2em;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.4em 0;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 1em;
+  text-align: center;
+}
+

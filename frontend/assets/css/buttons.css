@@ -1,0 +1,32 @@
+.btn-purple {
+  color: white;
+  background-color: var(--material-color-purple-800);
+}
+
+input[type="radio"]:not(:checked) + .btn-purple:hover {
+  color: white;
+  background-color: var(--material-color-purple-a700);
+}
+
+input[type="radio"]:checked + .btn-purple {
+  color: white;
+  background-color: var(--material-color-purple-a700);
+  box-shadow: 0 0 0 0.2em var(--material-color-purple-a100);
+}
+
+.btn-cyan {
+  color: white;
+  background-color: var(--material-color-cyan-800);
+}
+
+input[type="radio"]:not(:checked) + .btn-cyan:hover {
+  color: white;
+  background-color: var(--material-color-cyan-a700);
+}
+
+input[type="radio"]:checked + .btn-cyan {
+  color: white;
+  background-color: var(--material-color-cyan-a700);
+  box-shadow: 0 0 0 0.2em var(--material-color-cyan-a100);
+}
+

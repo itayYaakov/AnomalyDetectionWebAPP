@@ -1,0 +1,175 @@
+<div class="container-fluid">
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0">Dashboard</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xl-3 mb-4">
+            <div class="card shadow border-left-primary py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col mr-2">
+                            <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span><strong>REPORTS AVAILABLE</strong><br><strong>(total)</strong></span></div>
+                            <div class="text-dark font-weight-bold h5 mb-0"><span>0</span></div>
+                        </div>
+                        <div class="col-auto"><i class="fas fa-check fa-2x text-gray-300"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4">
+            <div class="card shadow border-left-success py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col mr-2">
+                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span><strong>ANOMALIES FOUND</strong><br><br></span></div>
+                            <div class="text-dark font-weight-bold h5 mb-0"><span>0</span></div>
+                        </div>
+                        <div class="col-auto"><i class="fas fa-exclamation fa-2x text-gray-300"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-md-6 col-xl-3 mb-4">
+            <div class="card shadow border-left-warning py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col mr-2">
+                            <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Last report creation<br>duration</span></div>
+                            <div class="text-dark font-weight-bold h5 mb-0"><span>18</span></div>
+                        </div>
+                        <div class="col-auto"><i class="far fa-clock fa-2x text-gray-300"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4">
+            <div class="card shadow border-left-info py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col mr-2">
+                            <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Last report date<br><br></span></div>
+                            <div class="text-dark font-weight-bold h5 mb-0"><span>18</span></div>
+                        </div>
+                        <div class="col-auto"><i class="far fa-calendar fa-2x text-gray-300"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-7 col-xl-8">
+            <div class="card shadow mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">Train Properties Graph View</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area" style="color: var(--material-color-blue-300);"><canvas data-bss-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;padding&quot;:20}}]}}}"></canvas></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-xl-4">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">Send Data Request</h6>
+                </div>
+                <div class="card-body">
+                    <form method="post" onsubmit="return false">
+                        <div class="form-group"><label class="big"><strong>Algorithm</strong></label>
+                            <div class="row">
+                                <input type="radio" id="formCheck-hybrid" class="btn-check" name="algorithm-type">
+                                <label class="btn btn-cyan col-sm m-2" for="formCheck-hybrid">Hybrid</label>
+                                <input type="radio" id="formCheck-regression" class="btn-check" name="algorithm-type">
+                                <label class="btn btn-purple col-sm m-2" for="formCheck-regression">Regression</label>
+                            </div>
+                        </div>
+                        <div class="form-group"><label class="big pull-left"><strong>Threshold</strong><br></label><label id="threshold_label" class="big pull-right" for="threshold_range">0.7</label><input class="form-control-range" type="range" id="threshold_range" min="0.0"
+                                max="1.0" step="0.05" value="0.7" for="threshold_label">
+                        </div>
+                        <div class="form-group">
+                            <div class="row"><label class="big col text-center"><strong>Upload Train csv file</strong><br></label><label class="big col text-center"><strong>Upload Test csv file</strong><br></label></div>
+                            <div class="row">
+                                <div id="drap-drop-train" class="dashed_upload col">
+                                    <div class="drop-zone w-100 h-100">
+                                        <div class="cont w-100 h-100 row m-0">
+                                            <div class="drop-zone__prompt d-flex flex-column w-100 h-100 centered justify-content-center align-self-center">
+                                                <div class="d-none d-sm-block w-100 h-100">
+                                                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                                    <header>
+                                                        <h5>Drag & drop</h5>
+                                                        <h6>OR</h6>
+                                                    </header>
+                                                </div>
+                                                <button class="btn btn-primary btn-sm mt-auto" type="button">Browse File</button>
+                                            </div>
+                                            <input type="file" accept=".csv" hidden name="myFile" class="drop-zone__input" />
+                                            <div class="drop-zone__thumb w-100 h-100 justify-content-center align-self-center d-none">
+                                                <div class="icon p-2"><i class="fas fa-file-csv fa-5x"></i></div>
+                                                <label></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="drap-drop-test" class="dashed_upload col">
+                                    <div class="drop-zone w-100 h-100">
+                                        <div class="cont w-100 h-100 row m-0">
+                                            <div class="drop-zone__prompt d-flex flex-column w-100 h-100 centered justify-content-center align-self-center">
+                                                <div class="d-none d-sm-block w-100 h-100">
+                                                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                                    <header>
+                                                        <h5>Drag & drop</h5>
+                                                        <h6>OR</h6>
+                                                    </header>
+                                                </div>
+                                                <button class="btn btn-primary btn-sm mt-auto" type="button">Browse File</button>
+                                            </div>
+                                            <input type="file" accept=".csv" hidden name="myFile" class="drop-zone__input" />
+                                            <div class="drop-zone__thumb w-100 h-100 justify-content-center align-self-center d-none">
+                                                <div class="icon p-2"><i class="fas fa-file-csv fa-5x"></i></div>
+                                                <label></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group"><button class="btn btn-primary btn-success col-sm" id="submit_request_btn" type="submit">Analyze</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-4 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
+            <div class="card shadow mb-4">
+                <div class="card-header card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">Reports History</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col px-0"><label class="text-center d-xl-flex justify-content-xl-center" id="reports_history_error">No data to be shown.<br>Please select a columns pair.<br></label>
+                            <ul class="list-group hidden" id="reports_history"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
+            <div class="card shadow mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">Anomalies by Column</h6>
+                </div>
+                <div class="card-body"><label class="text-center d-xl-flex justify-content-xl-center" id="anomalies_pie_chart_error">No data to be shown.<br>Please select a columns pair.<br></label>
+                    <div class="text-center">
+                        <canvas data-bss-chart="{&quot;type&quot;:&quot;pie&quot;,&quot;data&quot;:{&quot;labels&quot;:[],&quot;datasets&quot;:[]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:true,&quot;position&quot;:&quot;bottom&quot;,&quot;reverse&quot;:false},&quot;title&quot;:{&quot;display&quot;:false}}}">
+
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- iNSERT TO CODE -->
+<script src="/assets/js/formHandler.js"></script>
+<script src="/assets/js/dragAndDrop.js"></script>
+<script src="/assets/js/reportHistoryItem.js"></script>
