@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        // {
+        //     "type": "Run Server",
+        //     "request": "launch",
+        //     "name": "Launch Program",
+        //     "skipFiles": [
+        //         "<node_internals>/**"
+        //     ],
+        //     "program": "${workspaceFolder}\\backend\\Server\\Server.js"
+        // },
+        {
+            "name": "Launch localhost 8080",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://127.0.0.1:8080/",
+            "webRoot": "${workspaceFolder}/frontend"
+        },
+        {
+            "name": "Launch index.html",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/frontend/index.html"
+        }
+    ]
+}
