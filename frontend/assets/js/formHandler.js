@@ -148,14 +148,14 @@ var formHandler = function() {
 
         try {
             const response = await post("/detect", config, body);
-            if (response.status != 200) throw "Not a valid http response";
+            if (!response.ok) throw "Not a valid http response";
             const data = await response.json();
             console.log(data);
             const id = data['id'];
             let name = "anomalies_" + id;
 
             // store latest detect result
-            localStorage.setItem(name, data)
+            localStorage.setItem(name, JSON.stringify(data));
 
             // check if item is saved - if not, clear storage and try again
             if (!localStorage.hasOwnProperty(name)) {
@@ -164,9 +164,10 @@ var formHandler = function() {
             }
             // try to store train and test json as well
             name = "train_" + id;
-            localStorage.setItem(name, trainFileJson);
+            debugger;
+            localStorage.setItem(name, JSON.stringify(trainFileJson));
             name = "test_" + id;
-            localStorage.setItem(name, testFileJson);
+            localStorage.setItem(name, JSON.stringify(testFileJson));
 
             const newReport = new CustomEvent("newReport");
             document.querySelector("#event-manager").dispatchEvent(newReport);

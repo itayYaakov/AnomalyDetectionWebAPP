@@ -8,14 +8,16 @@ var table = function() {
     const table_title = document.getElementById("table-title");
 
     function init() {
-        load_table().catch(error => { console.error(error) });
+        load_table()
+            .catch((error) => {
+                console.error(error);
+            })
     }
 
     function createColumns(row) {
         var jsonData = [];
 
-        Object.keys(row).forEach(function(columnName) {
-            console.log(columnName);
+        row.forEach(function(columnName) {
             var jsonItem = {};
             jsonItem.id = columnName;
             jsonItem.name = columnName;
@@ -25,12 +27,46 @@ var table = function() {
         return jsonData;
     }
 
-    function setTableValues(data) {
+    function parseData(data, columns) {
+        var jsonData = [];
+
+
+        let size = data[Object.keys(data)[0]].length;
+
+        debugger;
+        var i;
+        for (i = 0; i < size; i++) {
+            var jsonItem = {};
+            columns.forEach(function(columnName) {
+                jsonItem[columnName] = data[columnName][i];
+                jsonData.push(jsonItem);
+            });
+        }
+        // jsonData = [
+        //     { A: 'John', B: 'john@example.com', C: '(353) 01 222 3333', D: 'gfdgdf', E: 'fdfsd', F: 'fdsfd', G: '848486', H: '123' },
+        //     { A: 'Johghgfhn', B: 'joample.com', C: '(3173', D: 'gfdgdf', E: 'fdfsd', F: '8888', G: '848486', H: '123' },
+        // ]
+
+        return jsonData;
+    }
+
+    function setTableValues(raw_data) {
         isTableVisible(false);
 
+        let columns = createColumns(Object.keys(raw_data));
+        let data = parseData(raw_data, Object.keys(raw_data));
+        // sort: true,
         new gridjs.Grid({
-            columns: createColumns(data[0]),
+            columns: columns,
             data: data,
+            sort: true,
+            fixedHeader: true,
+            search: true,
+            pagination: {
+                enabled: true,
+                limit: 25,
+                summary: true,
+            }
         }).render(table_obj);
     }
 
@@ -58,21 +94,10 @@ var table = function() {
         document.title = name;
 
         if (id) {
-            const url = "/table";
-            const params = {
-                type: type,
-                id: id,
-            };
-            const response = await get(url, params);
+            const response = await getFile(type, id);
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status} url:${url} params:${params}`);
-            }
-
-            const response_json = await response.json();
-
-            if (response_json.data) {
-                setTableValues(table_json_obj);
+            if (response) {
+                setTableValues(response);
             }
         }
     }
@@ -87,3 +112,6 @@ $(document).ready(function() {
     var pg = table();
     pg.init();
 });
+
+//# sourceURL=table.js
+//# sourceMappingURL=table.js

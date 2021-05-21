@@ -33,7 +33,9 @@ const getFile = async(type, id) => {
 
     // check if item is saved - if so, return it from local storage
     if (localStorage.hasOwnProperty(name)) {
-        return localStorage.getItem(name);
+        const raw_string = localStorage.getItem(name);
+        const data_json = JSON.parse(raw_string);
+        return data_json;
     }
 
     const url = "/reportData";
@@ -44,12 +46,10 @@ const getFile = async(type, id) => {
 
     try {
         const response = await get(url, params);
-        if (!isHtmlResponseValid) {
-            console.log("isHtmlResponseValid==false, response=", response);
-            throw "html response not valid";
-        }
-        let json = JSON.parse(response.js);
-        return json;
+
+        if (!response.ok) throw "Not a valid http response";
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.log("error= ", error);
         return null;

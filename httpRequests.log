@@ -22,14 +22,14 @@ confings = {
 
 files = {
 			"11581578175" : {
-				"trainFile" : TrainCSVjson,
-				"testFile" : TestCSVjson,
+				"train" : TrainCSVjson,
+				"test" : TestCSVjson,
 				"anomalies" : <anomalies_json>
 			},
 
 			"16839839589" : {
-				"trainFile" : TrainCSVjson2,
-				"testFile" : TestCSVjson2,
+				"train" : TrainCSVjson2,
+				"test" : TestCSVjson2,
 				"anomalies" : <anomalies_json>
 			},
 
@@ -90,9 +90,9 @@ request:
 
 response:
 	type == train:
-		files[id]['trainFile']
+		files[id]['train']
 	type == test:
-		files[id]['testFile']
+		files[id]['test']
 	type == result:
 		files[id]['anomalies']
 

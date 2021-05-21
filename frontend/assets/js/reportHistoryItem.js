@@ -1,4 +1,6 @@
 var reportHistoryItem = function() {
+    let button_name = "reports_list_item_";
+
     function init() {
         document.querySelector("#event-manager").addEventListener("newReport", (event) => {
             console.log("I'm listening on a custom event");
@@ -8,7 +10,7 @@ var reportHistoryItem = function() {
     }
 
     const myHTMLTemplate = (item) => `
-	<button type="button" id="reports_list_item_${item.id}" class="list-group-item list-group-item-action flex-column mb-1 shadow-lg align-items-start">
+	<button type="button" id="${button_name}${item.id}" class="list-group-item list-group-item-action flex-column mb-1 shadow-lg align-items-start">
         <div class="row d-flex w-100 justify-content-between">
             <div class="col-9 p-0 m-0">
                 <h5 class="mb-1">Test File: <font class="text-variable">${item.testFileName}</font></h5>
@@ -62,18 +64,28 @@ var reportHistoryItem = function() {
         return template.content.childNodes;
     }
 
+    function restoreLastActiveReport() {
+        const id = sessionStorage.getItem("selectedId");
+        if (id) {
+            const button_id = button_name + id;
+            $("#" + button_id).addClass("active");
+        }
+    }
+
     function updateReportsStatics(data) {
         let response_time = 0;
         let request_time = 0;
         let response_date = 0;
-        try {
-            const last_report = Object.keys(data).pop();
-            response_time = last_report;
-            request_time = data[last_report].time;
-            response_date = formatTimeToData(response_time);
-        } catch (error) {
-            debugger;
-            console.log("Error", error);
+        if (data && Object.keys(data).length !== 0) {
+            try {
+                const last_report = Object.keys(data).pop();
+                response_time = last_report;
+                request_time = data[last_report].time;
+                response_date = formatTimeToData(response_time);
+            } catch (error) {
+                debugger;
+                console.log("Error", error);
+            }
         }
         $("#statics-last-report-date").text(response_date);
         $("#statics-last-report-duration").text((response_time - request_time) + " ms");
@@ -92,7 +104,7 @@ var reportHistoryItem = function() {
 
         try {
             const response = await get("/reportsConfigHistory");
-            if (response.status != 200) throw "Not a valid http response";
+            if (!response.ok) throw "Not a valid http response";
             const dataJson = await response.json();
 
             for (const report in dataJson) {
@@ -118,8 +130,9 @@ var reportHistoryItem = function() {
                 }
                 $(list).removeClass("d-none").addClass("d-flex");
                 $(list_error).removeClass("d-flex").addClass("d-none");
-                updateReportsStatics(dataJson);
             }
+            updateReportsStatics(dataJson);
+            restoreLastActiveReport();
         } catch (error) {
             debugger;
             console.log(error);
@@ -153,6 +166,14 @@ var reportHistoryItem = function() {
                 return button.classList.remove("active");
             }
         });
+        updateSelectedReport(event.currentTarget);
+    }
+
+    function updateSelectedReport(button) {
+        const id = button.id.split('_').pop();
+        sessionStorage.setItem("selectedId", id);
+        // createButtons(id);
+        return
     }
 
     var that = {};

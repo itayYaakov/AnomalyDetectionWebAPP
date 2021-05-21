@@ -94,15 +94,14 @@ app.get('/reportsConfigHistory', async(req, res) => {
 app.get('/reportData', async(req, res) => {
     let params = getQueryParams(req);
     let type = params['type'];
+    let id = params['id'];
     let data;
-    if (type === 'train') {
-        data = files[params['id']]['trainFile'];
-    } else if (type === 'test') {
-        data = files[params['id']]['testFile'];
-    } else if (type === 'anomalies') {
-        data = files[params['id']]['anomalies'];
+    try {
+        data = files[id][type];
+        res.json(data);
+    } catch (error) {
+        res.writeHead(400, "Bad request: id=" + id + " type=" + type);
     }
-    res.json(data);
     res.end();
 })
 
