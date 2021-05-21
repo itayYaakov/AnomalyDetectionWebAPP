@@ -9,7 +9,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col mr-2">
                             <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span><strong>REPORTS AVAILABLE</strong><br><strong>(total)</strong></span></div>
-                            <div class="text-dark font-weight-bold h5 mb-0"><span>0</span></div>
+                            <div id="statics-total-reports" class="text-dark font-weight-bold h5 mb-0"><span></span></div>
                         </div>
                         <div class="col-auto"><i class="fas fa-check fa-2x text-gray-300"></i></div>
                     </div>
@@ -21,8 +21,8 @@
                 <div class="card-body">
                     <div class="row align-items-center no-gutters">
                         <div class="col mr-2">
-                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span><strong>ANOMALIES FOUND</strong><br><br></span></div>
-                            <div class="text-dark font-weight-bold h5 mb-0"><span>0</span></div>
+                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span><strong>ANOMALIES FOUND</strong><br><strong>(in selected report)</strong></span></div>
+                            <div id="statics-anomalies-in-report" class="text-dark font-weight-bold h5 mb-0"><span></span></div>
                         </div>
                         <div class="col-auto"><i class="fas fa-exclamation fa-2x text-gray-300"></i></div>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col mr-2">
                             <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Last report creation<br>duration</span></div>
-                            <div class="text-dark font-weight-bold h5 mb-0"><span>18</span></div>
+                            <div id="statics-last-report-duration" class="text-dark font-weight-bold h5 mb-0"><span></span></div>
                         </div>
                         <div class="col-auto"><i class="far fa-clock fa-2x text-gray-300"></i></div>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col mr-2">
                             <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Last report date<br><br></span></div>
-                            <div class="text-dark font-weight-bold h5 mb-0"><span>18</span></div>
+                            <div id="statics-last-report-date" class="text-dark font-weight-bold h5 mb-0"><span>18</span></div>
                         </div>
                         <div class="col-auto"><i class="far fa-calendar fa-2x text-gray-300"></i></div>
                     </div>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col px-0"><label class="text-center d-xl-flex justify-content-xl-center" id="reports_history_error">No data to be shown.<br>Please select a columns pair.<br></label>
+                        <div class="col px-0"><label class="text-center justify-content-center d-flex" id="reports_history_error">No data to be shown.<br>Please send Analyze report using the form.<br></label>
                             <ul class="list-group hidden" id="reports_history"></ul>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h6 class="text-primary font-weight-bold m-0">Anomalies by Column</h6>
                 </div>
-                <div class="card-body"><label class="text-center d-xl-flex justify-content-xl-center" id="anomalies_pie_chart_error">No data to be shown.<br>Please select a columns pair.<br></label>
+                <div class="card-body"><label class="text-center justify-content-center d-flex" id="anomalies_pie_chart_error">No data to be shown.<br>Please select a columns pair.<br></label>
                     <div class="text-center">
                         <canvas data-bss-chart="{&quot;type&quot;:&quot;pie&quot;,&quot;data&quot;:{&quot;labels&quot;:[],&quot;datasets&quot;:[]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:true,&quot;position&quot;:&quot;bottom&quot;,&quot;reverse&quot;:false},&quot;title&quot;:{&quot;display&quot;:false}}}">
 

@@ -1,4 +1,4 @@
-const request = async(url, params = {}, data = {}, method = "GET") => {
+const request = async(url, params = undefined, data = undefined, method = "GET") => {
     let options = {
         method,
     };
@@ -10,9 +10,9 @@ const request = async(url, params = {}, data = {}, method = "GET") => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         };
-    } else if ("GET" === method) {
+    } else if ("GET" === method && params) {
         url += "?" + new URLSearchParams(params).toString();
-    } else {
+    } else if (params) {
         options.body = JSON.stringify(params);
     }
 
@@ -20,8 +20,7 @@ const request = async(url, params = {}, data = {}, method = "GET") => {
     return response;
 };
 
-get = (url, params) => request(url, params, undefined, "GET");
-post = (url, params) => request(url, params, undefined, "POST");
+post = (url, params, data) => request(url, params, data, "POST");
 get = (url, params, data) => request(url, params, data, "GET");
 
 // !!!!! do this
@@ -57,7 +56,7 @@ const getFile = async(type, id) => {
     }
 };
 
-post = (url, params, data) => request(url, params, data, "POST");
-get = (url, params) => request(url, params, undefined, "GET");
-get = (url, params) => request(url, params, undefined, "GET");
-get = (url, params) => request(url, params, undefined, "GET");
+
+getAnomalies = (id) => getFile("anomalies", id);
+getTrain = (id) => getFile("train", id);
+getTest = (id) => getFile("test", id);

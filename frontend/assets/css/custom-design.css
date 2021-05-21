@@ -39,3 +39,11 @@
     background-color: var(--material-color-teal-800) !important;
     border-color: var(--material-color-teal-a200) !important;
 }
+
+.text-variable {
+    color: var(--material-color-blue-900) !important;
+}
+
+.text-variable-active {
+    color: var(--material-color-blue-100) !important;
+}

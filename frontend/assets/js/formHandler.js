@@ -23,27 +23,24 @@ var formHandler = function() {
         let forObj = event.target.getAttribute("for");
         if (forObj) document.getElementById(forObj).innerText = event.target.value;
     }
-    //var csv is the CSV file with headers
-    function csvJSON(csv) {
-        var lines = csv.split("\n");
 
-        var result = [];
-
-        var headers = lines[0].split(",");
-
+    function csvToJson(text) {
+        var json = {}
+        var lines = text.split('\n')
+        var attributes = lines[0].split(',')
+        attributes.forEach(attr => {
+            json[attr] = []
+        })
+        var values;
         for (var i = 1; i < lines.length; i++) {
-            var obj = {};
-            var currentline = lines[i].split(",");
-
-            for (var j = 0; j < headers.length; j++) {
-                obj[headers[j]] = currentline[j];
+            values = lines[i].split(',')
+            if (values[0] == "")
+                continue
+            for (var j = 0; j < values.length; j++) {
+                json[attributes[j]].push(parseFloat(values[j]))
             }
-
-            result.push(obj);
         }
-
-        //return result; //JavaScript object
-        return JSON.stringify(result); //JSON
+        return json
     }
 
     const readCsv = (inputFile) => {
@@ -84,10 +81,6 @@ var formHandler = function() {
             body: JSON.stringify(data), // body data type must match "Content-Type" header
         });
         return response.json(); // parses JSON response into native JavaScript objects
-    }
-
-    function validate(data) {
-        return true;
     }
 
     async function submitAnalyzeRequest() {
@@ -137,8 +130,8 @@ var formHandler = function() {
             alert("Error in reading", testFile.name);
         }
 
-        let trainFileJson = csvJSON(trainFileCsv);
-        let testFileJson = csvJSON(testFileCsv);
+        let trainFileJson = csvToJson(trainFileCsv);
+        let testFileJson = csvToJson(testFileCsv);
         const requestTime = Date.now();
 
         const config = {
@@ -153,37 +146,34 @@ var formHandler = function() {
             test: testFileJson,
         };
 
-        post("/detect", config, body)
-            .then((data) => {
-                debugger;
-                console.log(data);
-                if (validate(data)) {
-                    const id = data['id'];
-                    let name = "anomalies_" + id;
+        try {
+            const response = await post("/detect", config, body);
+            if (response.status != 200) throw "Not a valid http response";
+            const data = await response.json();
+            console.log(data);
+            const id = data['id'];
+            let name = "anomalies_" + id;
 
-                    // store latest detect result
-                    localStorage.setItem(name, data)
+            // store latest detect result
+            localStorage.setItem(name, data)
 
-                    // check if item is saved - if not, clear storage and try again
-                    if (!localStorage.hasOwnProperty(name)) {
-                        localStorage.clear();
-                        localStorage.setItem(name, data)
-                    }
-                    // try to store train and test json as well
-                    name = "train_" + id;
-                    localStorage.setItem(name, trainFileJson);
-                    name = "test_" + id;
-                    localStorage.setItem(name, testFileJson);
+            // check if item is saved - if not, clear storage and try again
+            if (!localStorage.hasOwnProperty(name)) {
+                localStorage.clear();
+                localStorage.setItem(name, data)
+            }
+            // try to store train and test json as well
+            name = "train_" + id;
+            localStorage.setItem(name, trainFileJson);
+            name = "test_" + id;
+            localStorage.setItem(name, testFileJson);
 
-                    clearForm();
-                }
-            })
-            .catch((error) => {
-                debugger;
-                console.log(error);
-                //   alert("Error in sending request to server:", error)
-                clearForm();
-            });
+            const newReport = new CustomEvent("newReport");
+            document.querySelector("#event-manager").dispatchEvent(newReport);
+            clearForm();
+        } catch (error) {
+            console.log("Error in sending request to server:", error);
+        }
 
         return false;
     }

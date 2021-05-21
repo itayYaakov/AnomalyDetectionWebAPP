@@ -46,16 +46,16 @@ app.post('/detect', async(req, res) => {
         let body = req.body;
 
         if (!params) {
-            res.writeHead(429, "Server's request threshold has been reached. Please try again later");
+            res.writeHead(400, "Params is empty");
         }
 
         if (!body) {
-            res.writeHead(429, "Server's request threshold has been reached. Please try again later");
+            res.writeHead(400, "Body is empty");
         }
 
         if (params && body) {
-            let testJson = JSON.parse(body['test']);
-            let trainJson = JSON.parse(body['train']);
+            let testJson = body['test'];
+            let trainJson = body['train'];
             let threshold = Number(params['threshold']);
             try {
                 let response = await model.detect(params['algorithm'], trainJson, testJson, threshold)
@@ -99,7 +99,7 @@ app.get('/reportData', async(req, res) => {
         data = files[params['id']]['trainFile'];
     } else if (type === 'test') {
         data = files[params['id']]['testFile'];
-    } else {
+    } else if (type === 'anomalies') {
         data = files[params['id']]['anomalies'];
     }
     res.json(data);

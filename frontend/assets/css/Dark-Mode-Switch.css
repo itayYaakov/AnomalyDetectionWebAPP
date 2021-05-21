@@ -62,6 +62,10 @@
     color: var(--material-color-light-blue-100) !important;
 }
 
+[data-theme="dark"] .text-variable {
+    color: var(--material-color-blue-300) !important;
+}
+
 [data-theme="dark"] .shadow {
     box-shadow: none !important;
     z-index: 1 !important;
