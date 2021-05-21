@@ -16,8 +16,9 @@ var table = function() {
 
     function createColumns(row) {
         var jsonData = [];
+        var rowWithNumber = ['Row Number'].concat(row);
 
-        row.forEach(function(columnName) {
+        rowWithNumber.forEach(function(columnName) {
             var jsonItem = {};
             jsonItem.id = columnName;
             jsonItem.name = columnName;
@@ -33,19 +34,16 @@ var table = function() {
 
         let size = data[Object.keys(data)[0]].length;
 
-        debugger;
         var i;
         for (i = 0; i < size; i++) {
-            var jsonItem = {};
+            var jsonItem = {
+                'Row Number': i
+            };
             columns.forEach(function(columnName) {
                 jsonItem[columnName] = data[columnName][i];
-                jsonData.push(jsonItem);
             });
+            jsonData.push(jsonItem);
         }
-        // jsonData = [
-        //     { A: 'John', B: 'john@example.com', C: '(353) 01 222 3333', D: 'gfdgdf', E: 'fdfsd', F: 'fdsfd', G: '848486', H: '123' },
-        //     { A: 'Johghgfhn', B: 'joample.com', C: '(3173', D: 'gfdgdf', E: 'fdfsd', F: '8888', G: '848486', H: '123' },
-        // ]
 
         return jsonData;
     }
@@ -62,6 +60,7 @@ var table = function() {
             sort: true,
             fixedHeader: true,
             search: true,
+            resizable: true,
             pagination: {
                 enabled: true,
                 limit: 25,
@@ -114,4 +113,3 @@ $(document).ready(function() {
 });
 
 //# sourceURL=table.js
-//# sourceMappingURL=table.js
