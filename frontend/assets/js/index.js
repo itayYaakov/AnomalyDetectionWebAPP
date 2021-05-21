@@ -40,7 +40,8 @@ const router = async() => {
         match = {
             route: routes[0],
             result: [location.pathname]
-        };  }
+        };
+    }
 
     const view = new match.route.view(getParams(match));
     const route_url = view.getHtml();
@@ -52,10 +53,17 @@ const router = async() => {
 window.addEventListener("popstate", router);
 
 document.addEventListener("DOMContentLoaded", () => {
-    [document.querySelectorAll('.nav-item')][0].forEach(function(item) {
+    document.querySelectorAll(".nav-item").forEach(function(item) {
         item.addEventListener("click", e => {
             e.preventDefault();
-            navigateTo(e.currentTarget.firstElementChild.href);
+            // remove active class from all buttons
+            document.querySelectorAll(".nav-link").forEach(function(item) {
+                item.classList.remove("active");
+            });
+            // add active class to the selected button
+            let nav_link = e.currentTarget.firstElementChild;
+            nav_link.classList.add("active");
+            navigateTo(nav_link.href);
         });
     });
 });

@@ -1,5 +1,3 @@
-import {get, post } from './utilitiesFunctions.js';
-
 var table = function() {
 
     const html_table_id = "table_data";
@@ -53,11 +51,11 @@ var table = function() {
 
 
         // parameters for http get request
-        console.log("page=", page)
         const type = page.split("table_")[1];
         const id = sessionStorage.getItem("selectedId");
-        console.log("type=", type)
-        table_title.innerHTML = type.replace(/^./, type[0].toUpperCase()) + " Table";
+        let name = type.replace(/^./, type[0].toUpperCase()) + " Table";
+        table_title.innerHTML = name;
+        document.title = name;
 
         if (id) {
             const url = "/table";

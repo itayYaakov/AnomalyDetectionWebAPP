@@ -113,5 +113,4 @@ class RegressionDetector {
 
 }
 
-
 module.exports = { RegressionDetector }

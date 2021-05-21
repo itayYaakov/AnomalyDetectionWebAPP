@@ -86,6 +86,10 @@ var formHandler = function() {
         return response.json(); // parses JSON response into native JavaScript objects
     }
 
+    function validate(data) {
+        return true;
+    }
+
     async function submitAnalyzeRequest() {
         let hybridButtonState = document.getElementById("formCheck-hybrid").checked;
         let regressionButtonState = document.getElementById("formCheck-regression").checked;
@@ -152,8 +156,27 @@ var formHandler = function() {
         post("/detect", config, body)
             .then((data) => {
                 debugger;
-                clearForm();
                 console.log(data);
+                if (validate(data)) {
+                    const id = data['id'];
+                    let name = "anomalies_" + id;
+
+                    // store latest detect result
+                    localStorage.setItem(name, data)
+
+                    // check if item is saved - if not, clear storage and try again
+                    if (!localStorage.hasOwnProperty(name)) {
+                        localStorage.clear();
+                        localStorage.setItem(name, data)
+                    }
+                    // try to store train and test json as well
+                    name = "train_" + id;
+                    localStorage.setItem(name, trainFileJson);
+                    name = "test_" + id;
+                    localStorage.setItem(name, testFileJson);
+
+                    clearForm();
+                }
             })
             .catch((error) => {
                 debugger;
