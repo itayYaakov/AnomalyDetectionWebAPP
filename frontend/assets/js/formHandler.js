@@ -164,7 +164,6 @@ var formHandler = function() {
             }
             // try to store train and test json as well
             name = "train_" + id;
-            debugger;
             localStorage.setItem(name, JSON.stringify(trainFileJson));
             name = "test_" + id;
             localStorage.setItem(name, JSON.stringify(testFileJson));
@@ -193,4 +192,3 @@ $(document).ready(function() {
 });
 
 //# sourceURL=formHandler.js
-//# sourceMappingURL=formHandler.js

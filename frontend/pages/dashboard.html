@@ -156,14 +156,11 @@
         <div class="col mb-4 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
             <div class="card shadow mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h6 class="text-primary font-weight-bold m-0">Anomalies by Column</h6>
+                    <h6 class="text-primary font-weight-bold m-0">Explore Anomalies</h6>
                 </div>
-                <div class="card-body"><label class="text-center justify-content-center d-flex" id="anomalies_pie_chart_error">No data to be shown.<br>Please select a columns pair.<br></label>
-                    <div class="text-center">
-                        <canvas data-bss-chart="{&quot;type&quot;:&quot;pie&quot;,&quot;data&quot;:{&quot;labels&quot;:[],&quot;datasets&quot;:[]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:true,&quot;position&quot;:&quot;bottom&quot;,&quot;reverse&quot;:false},&quot;title&quot;:{&quot;display&quot;:false}}}">
-
-                        </canvas>
-                    </div>
+                <div class="card-body">
+                    <div id="columns-buttons-error"><label class="text-center justify-content-center d-flex" id="anomalies_pie_chart_error">No data to be shown.<br>Please select a Report item from list.<br></label></div>
+                    <div id="columns-buttons" class=""></div>
                 </div>
             </div>
         </div>

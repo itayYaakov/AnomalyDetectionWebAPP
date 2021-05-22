@@ -69,6 +69,7 @@ var reportHistoryItem = function() {
         if (id) {
             const button_id = button_name + id;
             $("#" + button_id).addClass("active");
+            createButtons(id);
         }
     }
 
@@ -89,7 +90,6 @@ var reportHistoryItem = function() {
         }
         $("#statics-last-report-date").text(response_date);
         $("#statics-last-report-duration").text((response_time - request_time) + " ms");
-        // $("#statics-anomalies-in-report").text();
         $("#statics-total-reports").text(Object.keys(data).length);
     }
 
@@ -169,10 +169,77 @@ var reportHistoryItem = function() {
         updateSelectedReport(event.currentTarget);
     }
 
-    function updateSelectedReport(button) {
+    function map(x, in_min, in_max, out_min, out_max) {
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
+
+    async function createButtons(id) {
+        try {
+            const buttonHolder = document.getElementById("columns-buttons");
+            const buttonHolderError = document.getElementById("columns-buttons-error");
+
+            buttonHolder.innerHTML = '';
+
+            const response = await getAnomalies(id);
+            const anomalies = response['anomalies'];
+            const size = anomalies.length;
+            $("#statics-anomalies-in-report").text(size);
+
+            var i = 0;
+            while (i < size) {
+                let row = document.createElement("div");
+                $(row).addClass("row").addClass("justify-content-center").addClass("mx-auto");
+                for (var k = 0; k < 4; k++) {
+                    if (i == size) break;
+                    const col_1 = anomalies[i]['col_1'];
+                    const col_2 = anomalies[i]['col_2'];
+                    i++;
+                    let button = document.createElement("button");
+                    button.setAttribute("col_1", col_1);
+                    button.setAttribute("col_2", col_2);
+                    button.addEventListener("click", setColumnsButtonActive, false);
+                    $(button).text(col_1 + "-" + col_2);
+                    $(button).addClass("btn").addClass("btn-gradient").addClass("col-auto").addClass("btn-sm").addClass("mx-2").addClass("my-2");
+                    row.appendChild(button);
+                }
+                buttonHolder.appendChild(row);
+            }
+
+            hideElement(buttonHolderError);
+        } catch (error) {
+            console.log(error);
+            hideElement(buttonHolderError);
+            buttonHolder.innerHTML = '';
+        }
+        return;
+    }
+
+    async function updateGraphs(id, col_1, col_2) {
+        console.log(`id=${id} col_1=${col_1} col_2=${col_2}`);
+    }
+
+    async function setColumnsButtonActive(event) {
+        // debugger;
+        const buttonHolder = document.getElementById("columns-buttons");
+        buttonHolder.querySelectorAll(".btn").forEach(function(button) {
+            // remove active class from all buttons
+            $(button).removeClass("active");
+        });
+        // add active class to the selected button
+        let event_button = event.currentTarget;
+        event_button.classList.add("active");
+        const col_1 = event_button.getAttribute("col_1");
+        const col_2 = event_button.getAttribute("col_2");
+        const id = sessionStorage.getItem("selectedId");
+        if (id) {
+            updateGraphs(id, col_1, col_2);
+        }
+    }
+
+    async function updateSelectedReport(button) {
         const id = button.id.split('_').pop();
         sessionStorage.setItem("selectedId", id);
-        // createButtons(id);
+        createButtons(id);
         return
     }
 
@@ -189,4 +256,3 @@ $(document).ready(function() {
 });
 
 //# sourceURL=reportHistoryItem.js
-//# sourceMappingURL=reportHistoryItem.js

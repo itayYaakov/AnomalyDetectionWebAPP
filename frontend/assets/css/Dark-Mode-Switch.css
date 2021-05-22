@@ -3,6 +3,22 @@
     color: var(--color-text-primary);
 }
 
+[data-theme="dark"] .btn-gradient {
+    color: var(--color-text-primary);
+    box-shadow: 2px 1000px 1px var(--color-bg-canvas) inset;
+}
+
+
+/* [data-theme="dark"] .btn-gradient:hover {
+    box-shadow: 2px 1000px 1px rgb(19 26 35 / 55%) inset;
+    color: white;
+} */
+
+[data-theme="dark"] .btn-gradient.active {
+    box-shadow: none;
+    color: white;
+}
+
 [data-theme="dark"] .list-group-item {
     background-color: #161b22 !important;
     color: var(--color-text-primary);
@@ -132,6 +148,65 @@
     top: 0;
     color: #5a5c69;
     background: #111111;
+}
+
+[data-theme="dark"] .gridjs-tbody td.gridjs-td {
+    background-color: #161b22 !important;
+    border: 1px solid #3f4a58 !important;
+}
+
+[data-theme="dark"] th.gridjs-th {
+    background-color: #2c353e !important;
+    color: var(--color-text-primary) !important;
+}
+
+[data-theme="dark"] .gridjs-container {
+    color: var(--color-text-primary) !important;
+}
+
+[data-theme="dark"] .table thead th {
+    border-bottom: 2px solid var(--material-color-light-blue-a200) !important;
+    border-top: 2px solid var(--material-color-light-blue-100) !important;
+}
+
+[data-theme="dark"] th.gridjs-th-fixed {
+    position: sticky;
+    box-shadow: 0 1px 0 0 #5d5d5d;
+}
+
+[data-theme="dark"] input.gridjs-input {
+    background-color: #414b56 !important;
+    border: 2px solid #3d8edb !important;
+    color: var(--color-text-primary) !important;
+}
+
+[data-theme="dark"] input.gridjs-input::placeholder {
+    color: var(--color-text-secondary) !important;
+}
+
+
+/* [data-theme="dark"] .table td,
+.table th {
+    border-top: 1px solid var(--material-color-light-blue-a200) !important;
+} */
+
+[data-theme="dark"] .gridjs-footer {
+    background-color: #1a1f24 !important;
+}
+
+[data-theme="dark"] .gridjs-pagination {
+    color: var(--color-text-primary) !important;
+}
+
+[data-theme="dark"] .gridjs-pagination .gridjs-pages button:hover {
+    background-color: #46525e !important;
+    color: #898fa5 !important;
+}
+
+[data-theme="dark"] .gridjs-pagination .gridjs-pages button {
+    background-color: #252b31 !important;
+    border: 1px solid #1a1f24 !important;
+    color: var(--color-text-primary) !important;
 }
 
 :root {

@@ -1,32 +1,76 @@
 .btn-purple {
-  color: white;
-  background-color: var(--material-color-purple-800);
+    color: white;
+    background-color: var(--material-color-purple-800);
 }
 
-input[type="radio"]:not(:checked) + .btn-purple:hover {
-  color: white;
-  background-color: var(--material-color-purple-a700);
+input[type="radio"]:not(:checked)+.btn-purple:hover {
+    color: white;
+    background-color: var(--material-color-purple-a700);
 }
 
-input[type="radio"]:checked + .btn-purple {
-  color: white;
-  background-color: var(--material-color-purple-a700);
-  box-shadow: 0 0 0 0.2em var(--material-color-purple-a100);
+input[type="radio"]:checked+.btn-purple {
+    color: white;
+    background-color: var(--material-color-purple-a700);
+    box-shadow: 0 0 0 0.2em var(--material-color-purple-a100);
 }
 
 .btn-cyan {
-  color: white;
-  background-color: var(--material-color-cyan-800);
+    color: white;
+    background-color: var(--material-color-cyan-800);
 }
 
-input[type="radio"]:not(:checked) + .btn-cyan:hover {
-  color: white;
-  background-color: var(--material-color-cyan-a700);
+input[type="radio"]:not(:checked)+.btn-cyan:hover {
+    color: white;
+    background-color: var(--material-color-cyan-a700);
 }
 
-input[type="radio"]:checked + .btn-cyan {
-  color: white;
-  background-color: var(--material-color-cyan-a700);
-  box-shadow: 0 0 0 0.2em var(--material-color-cyan-a100);
+input[type="radio"]:checked+.btn-cyan {
+    color: white;
+    background-color: var(--material-color-cyan-a700);
+    box-shadow: 0 0 0 0.2em var(--material-color-cyan-a100);
 }
 
+.btn-gradient {
+    width: max-content;
+    border-radius: 100rem;
+    padding: 1rem;
+    font-weight: bold;
+    padding: .5rem 3rem;
+    color: #858796;
+    border: solid 3px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(-45deg, #1b9759 0%, #19627c 100%);
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(-45deg, #2ae88a 0%, #08aeea 100%); */
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px white inset;
+}
+
+.btn-gradient:hover {
+    box-shadow: 2px 1000px 1px rgb(19 26 35 / 55%) inset;
+    color: black;
+}
+
+.btn-gradient.active {
+    box-shadow: none;
+    color: white;
+}
+
+
+/* .btn-gradient {
+    color: var(--color-text-inverse);
+    border: 3em solid transparent;
+    border-radius: 3em;
+    border-color: linear-gradient(-45deg, #2ae88a 0%, #08aeea 100%);
+    background: transparent;
+} */
+
+
+/* .btn-gradient:hover {
+    background: linear-gradient(-45deg, #2ae88a 0%, #08aeea 20%) border-box;
+} */
+
+
+/* .btn-gradient.active {
+    color: var(--color-text-primary);
+    background: linear-gradient(-45deg, #2ae88a 0%, #08aeea 100%) border-box;
+}  */

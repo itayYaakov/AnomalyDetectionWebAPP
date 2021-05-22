@@ -63,7 +63,7 @@ var table = function() {
             resizable: true,
             pagination: {
                 enabled: true,
-                limit: 25,
+                limit: 20,
                 summary: true,
             }
         }).render(table_obj);

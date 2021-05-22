@@ -60,3 +60,11 @@ const getFile = async(type, id) => {
 getAnomalies = (id) => getFile("anomalies", id);
 getTrain = (id) => getFile("train", id);
 getTest = (id) => getFile("test", id);
+
+function hideElement(elem) {
+    $(elem).removeClass("d-flex").addClass("d-none");
+}
+
+function showElement(elem) {
+    $(elem).removeClass("d-none").addClass("d-flex");
+}
