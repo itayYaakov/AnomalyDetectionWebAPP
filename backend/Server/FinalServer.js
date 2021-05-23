@@ -1,23 +1,19 @@
 const path = require('path');
 const express = require('express');
+const fs = require('fs');
 const host = 'localhost';
 const port = 8080;
 const model = require('../Model/Model.js');
 const app = express();
 const maxRequests = 20;
 let workingRequests = 0;
-let configs = {};
-let files = {};
-
-/*
-
-need to install fs package to work with writing and reading.
 
 let modelData = JSON.parse(fs.readFileSync('data.json').toString());
 let configs = modelData['configs'];
 let files = modelData['files'];
 
 async function updateData() {
+    await null;
     let data = {
         "configs" : configs,
         "files" : files
@@ -25,7 +21,7 @@ async function updateData() {
     fs.writeFileSync("data.json", JSON.stringify(data), "utf8");
 }
 
-*/
+
 
 app.use(express.static(__dirname))
 app.use("/pages", express.static(path.resolve(__dirname, "..", "..", "frontend", "pages")));
