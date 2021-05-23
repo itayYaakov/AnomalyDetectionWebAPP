@@ -3,7 +3,6 @@ var reportHistoryItem = function() {
 
     function init() {
         document.querySelector("#event-manager").addEventListener("newReport", (event) => {
-            console.log("I'm listening on a custom event");
             updateReportsHistory();
         });
         updateReportsHistory();
@@ -74,23 +73,25 @@ var reportHistoryItem = function() {
     }
 
     function updateReportsStatics(data) {
-        let response_time = 0;
-        let request_time = 0;
-        let response_date = 0;
+        let total_reports = 0;
+        let response_date = "";
+        let report_duration = "";
         if (data && Object.keys(data).length !== 0) {
             try {
                 const last_report = Object.keys(data).pop();
-                response_time = last_report;
-                request_time = data[last_report].time;
+                let response_time = last_report;
+                let request_time = data[last_report].time;
+                report_duration = response_time - request_time + " ms";
                 response_date = formatTimeToData(response_time);
+                total_reports = Object.keys(data).length
             } catch (error) {
                 debugger;
                 console.log("Error", error);
             }
         }
         $("#statics-last-report-date").text(response_date);
-        $("#statics-last-report-duration").text((response_time - request_time) + " ms");
-        $("#statics-total-reports").text(Object.keys(data).length);
+        $("#statics-last-report-duration").text(report_duration);
+        $("#statics-total-reports").text(total_reports);
     }
 
     async function updateReportsHistory() {
@@ -145,9 +146,8 @@ var reportHistoryItem = function() {
         var buttonList = document.querySelectorAll("#reports_history > button");
         buttonList.forEach(function(button) {
             var smallTexts = button.querySelectorAll("h6");
-            var valueTexts = button.querySelectorAll(".text-variable");
-            var valueActiveTexts = button.querySelectorAll(".text-variable-active");
             if (button === event.currentTarget && !button.classList.contains("active")) {
+                var valueTexts = button.querySelectorAll(".text-variable");
                 smallTexts.forEach(function(text) {
                     text.classList.replace("text-muted", "text-white");
                 });
@@ -157,6 +157,7 @@ var reportHistoryItem = function() {
                 return button.classList.add("active");
             }
             if (button.classList.contains("active")) {
+                var valueActiveTexts = button.querySelectorAll(".text-variable-active");
                 smallTexts.forEach(function(text) {
                     text.classList.replace("text-white", "text-muted");
                 });
