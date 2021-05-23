@@ -6,8 +6,19 @@ const model = require('../Model/Model.js');
 const app = express();
 const maxRequests = 20;
 let workingRequests = 0;
-let files = {};
-let configs = {};
+
+let modelData = JSON.parse(fs.readFileSync('data.json').toString());
+let configs = modelData['configs'];
+let files = modelData['files'];
+
+async function updateData() {
+    let data = {
+        "configs" : configs,
+        "files" : files
+    };
+    fs.writeFileSync("data.json", JSON.stringify(data), "utf8");
+}
+
 
 
 app.use(express.static(__dirname))
@@ -80,7 +91,7 @@ app.post('/detect', async(req, res) => {
 
         }
         workingRequests--;
-
+        updateData();
     }
     res.end();
 })
