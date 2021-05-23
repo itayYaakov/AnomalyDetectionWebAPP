@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anomaly Detection Server</title>
+</head>
+<style>
+    .title {
+        font-size: 40px;
+        color: darkblue;
+    }
+    table, th, td {
+        width: 200px;
+        height: 50px;
+        border: 1px solid black;
+    }
+    textarea{
+        width: 700px;
+        height: 300px;
+    }
+
+</style>
+<body>
+    <div align="center">
+        <label class="title">Anomaly Detection Server</label><br/>
+    </div>
+    <br/>
+
+    <!--detect Testing-->
+
+    <div align="center">
+        <select id="algo">
+            <option>regression</option>
+            <option>hybrid</option>
+        </select>
+        <input type="file" formenctype="multipart/form-data" id="train" onchange="getFile('train')">
+        <input type="file" formenctype="multipart/form-data" id="test" onchange="getFile('test')">
+        <br/>
+        <label>threshold:</label><input type="text" id="threshold">
+        <br/>
+        <label>train name:</label><input type="text" id="trainName">
+        <br/>
+        <label>test name:</label><input type="text" id="testName">
+        <br/>
+        <button id="detect" onclick="send()">Click To Display Anomalies</button>
+        <br/><br/>
+        <textarea id="text" readonly></textarea>
+    </div>
+    <br/>
+
+    <!--reportsConfigHistory Testing-->
+
+    <div align="center" id="y">
+        <br/>
+        <button id="getData" onclick="reportsConfigHistory()">reportsConfigHistoryTesting</button>
+        <br/>
+        <textarea id="getRCH" readonly></textarea>
+    </div>
+
+    <!--reportData Testing-->
+
+    <div align="center">
+        <select id="type">
+            <option>train</option>
+            <option>test</option>
+            <option>result</option>
+        </select>
+        <br/>
+        <label for="id">select ID</label><input type="text" id="id"/>
+        <button id="getReportData" onclick="reportData()">reportsConfigHistoryTesting</button>
+        <br/>
+        <textarea id="getRD" readonly></textarea>
+    </div>
+    <br/>
+    <script>
+        var body = {}
+        var i = 1
+
+        function getFile(name) {
+            var reader = new FileReader()
+            reader.onload = readFile
+            function readFile (event) {
+                body[name] = csvToJson(event.target.result)
+            }
+            reader.readAsText(document.getElementById(name).files[0])
+        }
+
+        function csvToJson(text) {
+            var json = {}
+            var lines = text.split('\n')
+            var attributes = lines[0].split(',')
+            attributes.forEach(attr => {
+                json[attr] = []
+            })
+            var values;
+            for (var i = 1; i < lines.length; i++) {
+                values = lines[i].split(',')
+                if (values[0] == "")
+                    continue
+                for (var j = 0; j < values.length; j++) {
+                    json[attributes[j]].push(parseFloat(values[j]))
+                }
+            }
+            return json
+        }
+
+        function send() {
+            var url = new URL("http://localhost:8000/detect")
+            var time = Date.now()
+            var algorithm = document.getElementById('algo').value
+            var trainName = document.getElementById('trainName').value
+            var testName = document.getElementById('testName').value
+            var threshold = document.getElementById('threshold').value
+            url.searchParams.append('algorithm', algorithm)
+            url.searchParams.append('threshold', threshold.toString())
+            url.searchParams.append('time', time.toString())
+            url.searchParams.append('trainFileName', trainName)
+            url.searchParams.append('testFileName', testName)
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            }
+            fetch(url.href, options)
+                .then( response => {
+                    response.json().then( r => {
+                        document.getElementById('text').innerHTML = JSON.stringify(r)
+                    })
+                })
+                .catch(err => alert(err))
+        }
+
+        function reportsConfigHistory() {
+            var url = new URL('http://localhost:8000/reportsConfigHistory')
+            const options = {
+                method: 'GET',
+            }
+            fetch(url.href, options)
+            .then(response => {
+                response.json().then(json => {
+                    document.getElementById('getRCH').innerHTML = JSON.stringify(json)
+                })
+            })
+            .catch(err => alert(err))
+        }
+
+        function reportData() {
+            var type = document.getElementById('type').value
+            var id = document.getElementById('id').value
+            var url = new URL('http://localhost:8000/reportData')
+            url.searchParams.append('id', id)
+            url.searchParams.append('type', type)
+            const options = {
+                method: 'GET',
+            }
+            fetch(url.href, options)
+            .then(response => {
+                response.json()
+                    .then(json => {document.getElementById('getRD').innerHTML = JSON.stringify(json)})
+            }).catch(err => alert(err))
+        }
+
+    </script>
+</body>
+</html>
