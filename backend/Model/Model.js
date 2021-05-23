@@ -10,7 +10,6 @@ async function detect(type, train, test, threshold) {
     }
     detector.setThreshold(threshold);
     detector.learnNormal(train);
-    console.log(detector.cf);
     const response = detector.detect(test);
     return response;
 }
