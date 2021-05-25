@@ -206,10 +206,10 @@ var reportHistoryItem = function() {
                 buttonHolder.appendChild(row);
             }
 
-            hideElement(buttonHolderError);
+            hideElementFlex(buttonHolderError);
         } catch (error) {
             console.log(error);
-            hideElement(buttonHolderError);
+            hideElementFlex(buttonHolderError);
             buttonHolder.innerHTML = '';
         }
         return;
@@ -233,7 +233,7 @@ var reportHistoryItem = function() {
         const col_2 = event_button.getAttribute("col_2");
         const id = sessionStorage.getItem("selectedId");
         if (id) {
-            updateGraphs(id, col_1, col_2);
+            createCharts(id, col_1, col_2);
         }
     }
 
@@ -241,6 +241,7 @@ var reportHistoryItem = function() {
         const id = button.id.split('_').pop();
         sessionStorage.setItem("selectedId", id);
         createButtons(id);
+        resetCharts();
         return
     }
 

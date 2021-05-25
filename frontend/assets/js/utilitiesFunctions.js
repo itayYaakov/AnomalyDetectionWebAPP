@@ -23,11 +23,6 @@ const request = async(url, params = undefined, data = undefined, method = "GET")
 post = (url, params, data) => request(url, params, data, "POST");
 get = (url, params, data) => request(url, params, data, "GET");
 
-// !!!!! do this
-const isHtmlResponseValid = async(response) => {
-    return true;
-};
-
 const getFile = async(type, id) => {
     const name = type + "_" + id;
 
@@ -61,10 +56,20 @@ getAnomalies = (id) => getFile("anomalies", id);
 getTrain = (id) => getFile("train", id);
 getTest = (id) => getFile("test", id);
 
-function hideElement(elem) {
+function hideElementFlex(elem) {
     $(elem).removeClass("d-flex").addClass("d-none");
 }
 
-function showElement(elem) {
+function showElementFlex(elem) {
     $(elem).removeClass("d-none").addClass("d-flex");
 }
+
+function hideElementBlock(elem) {
+    $(elem).removeClass("d-block").addClass("d-none");
+}
+
+function showElementBlock(elem) {
+    $(elem).removeClass("d-none").addClass("d-block");
+}
+
+//# sourceURL=utilitiesFunctions.js

@@ -8,11 +8,9 @@
     box-shadow: 2px 1000px 1px var(--color-bg-canvas) inset;
 }
 
-
-/* [data-theme="dark"] .btn-gradient:hover {
-    box-shadow: 2px 1000px 1px rgb(19 26 35 / 55%) inset;
-    color: white;
-} */
+[data-theme="dark"] a.border.rounded.d-inline.scroll-to-top {
+    z-index: 2 !important;
+}
 
 [data-theme="dark"] .btn-gradient.active {
     box-shadow: none;
