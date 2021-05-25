@@ -3,6 +3,7 @@ chartCol2;
 chartCorrelation;
 
 class ChartsCreator {
+
     static singleFeatureConfig = {
         type: "line",
         data: undefined,
@@ -15,6 +16,9 @@ class ChartsCreator {
                     fontSize: 18,
                 },
             },
+            backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-bg-color'),
+            borderColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-border-color'),
+            // borderWidth: getComputedStyle(document.documentElement).getPropertyValue('--chart-border-width'),
             responsive: false,
             elements: {
                 line: {
@@ -141,6 +145,7 @@ function updateData(chart, id, data, config) {
         chart['data'] = data;
     }
     chart.update();
+    chart.resize();
     return chart;
 }
 
