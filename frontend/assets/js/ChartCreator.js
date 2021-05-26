@@ -1,7 +1,7 @@
 chartFeatures;
 chartCorrelation;
-let color1 = getComputedStyle(document.documentElement).getPropertyValue('--material-color-cyan-a700');
-let color2 = getComputedStyle(document.documentElement).getPropertyValue('--material-color-light-green-a700');
+let color1 = getComputedStyle(document.documentElement).getPropertyValue('--material-color-cyan-400');
+let color2 = getComputedStyle(document.documentElement).getPropertyValue('--material-color-light-green-400');
 class ChartsCreator {
 
     static singleFeatureConfig = {
@@ -24,14 +24,20 @@ class ChartsCreator {
                             enabled: true,
                         },
                     }
-                }
+                },
+                legend: {
+                    labels: {
+                        font: {
+                            size: 14
+                        },
+                    },
+                },
             },
             legend: {
                 labels: {
                     fontColor: "black",
                     fontSize: 18,
                 },
-                position: "chartArea",
             },
             backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-bg-color'),
             borderColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-border-color'),
@@ -63,7 +69,14 @@ class ChartsCreator {
                             enabled: true,
                         },
                     },
-                }
+                },
+                legend: {
+                    labels: {
+                        font: {
+                            size: 14
+                        }
+                    },
+                },
             },
             pointRadius: 2,
             pointHoverRadius: 10,
@@ -74,7 +87,6 @@ class ChartsCreator {
                     fontColor: "black",
                     fontSize: 18,
                 },
-                position: "chartArea",
             },
             elements: {
                 line: {
@@ -132,6 +144,7 @@ class ChartsCreator {
         // set charts.js parameters
         const data = {
             datasets: [{
+                backgroundColor: "grey",
                 label: feature1 + "-" + feature2,
                 data: dataSet,
             }, ],
@@ -142,8 +155,8 @@ class ChartsCreator {
 
         //  set all points as black
         for (let i = 0; i < f1.length; ++i) {
-            data.datasets[0].pointBackgroundColor[i] = "black";
-            data.datasets[0].pointBorderColor[i] = "black";
+            data.datasets[0].pointBackgroundColor[i] = "grey";
+            data.datasets[0].pointBorderColor[i] = "grey";
         }
 
         //  set anomalies points as red
