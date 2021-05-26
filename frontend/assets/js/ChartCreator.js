@@ -1,7 +1,7 @@
-chartCol1;
-chartCol2;
+chartFeatures;
 chartCorrelation;
-
+let color1 = getComputedStyle(document.documentElement).getPropertyValue('--material-color-cyan-a700');
+let color2 = getComputedStyle(document.documentElement).getPropertyValue('--material-color-light-green-a700');
 class ChartsCreator {
 
     static singleFeatureConfig = {
@@ -10,16 +10,33 @@ class ChartsCreator {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            plugins: {
+                zoom: {
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                        },
+                        pinch: {
+                            enabled: true
+                        },
+                        mode: 'xy',
+                        drag: {
+                            enabled: true,
+                        },
+                    }
+                }
+            },
             legend: {
                 labels: {
                     fontColor: "black",
                     fontSize: 18,
                 },
+                position: "chartArea",
             },
             backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-bg-color'),
             borderColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-border-color'),
             // borderWidth: getComputedStyle(document.documentElement).getPropertyValue('--chart-border-width'),
-            responsive: false,
+            responsive: true,
             elements: {
                 line: {
                     tension: 0,
@@ -32,6 +49,24 @@ class ChartsCreator {
         type: "scatter",
         data: undefined,
         options: {
+            plugins: {
+                zoom: {
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                        },
+                        pinch: {
+                            enabled: true
+                        },
+                        mode: 'y',
+                        drag: {
+                            enabled: true,
+                        },
+                    },
+                }
+            },
+            pointRadius: 2,
+            pointHoverRadius: 10,
             responsive: true,
             maintainAspectRatio: false,
             legend: {
@@ -39,8 +74,8 @@ class ChartsCreator {
                     fontColor: "black",
                     fontSize: 18,
                 },
+                position: "chartArea",
             },
-            responsive: false,
             elements: {
                 line: {
                     tension: 0,
@@ -55,14 +90,6 @@ class ChartsCreator {
         this.anomalies = ChartsCreator.parseAnomalies(anomaliesJson);
     }
 
-    getRange(begin, end) {
-        let range = [];
-        for (; begin < end; begin++) {
-            range.push(String(begin));
-        }
-        return range;
-    }
-
     static parseAnomalies(anomaliesData) {
         let anomalies = anomaliesData.anomalies;
         let anomaliesDict = {};
@@ -73,35 +100,25 @@ class ChartsCreator {
         return anomaliesDict;
     }
 
-    setGraphData(ctx, data, graph) {
-
+    createFeatureData(featureName, color) {
+        const featureDictionary = this.features;
+        return {
+            label: featureName,
+            backgroundColor: color,
+            borderColor: color,
+            data: featureDictionary[featureName],
+        };
     }
 
-    createFeaturesChart(featureName) {
-        // let canvas = document.getElementById(chartId);
-        // let ctx = canvas.getContext("2d");
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        const featureDictionary = this.features;
-        const labels = this.getRange(0, featureDictionary[featureName].length);
+    createFeaturesChart(data1, data2) {
         const data = {
-            labels: labels,
-            datasets: [{
-                label: featureName,
-                backgroundColor: "green",
-                borderColor: "green",
-                data: featureDictionary[featureName],
-            }, ],
+            datasets: [data1, data2],
         };
 
         return data;
     }
 
     createCorrelationChart(feature1, feature2) {
-        // let canvas = document.getElementById(chartId);
-        // let ctx = canvas.getContext("2d");
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         let f1 = this.features[feature1];
         let f2 = this.features[feature2];
         let ano = this.anomalies[feature1 + "-" + feature2];
@@ -112,42 +129,67 @@ class ChartsCreator {
             dataSet.push({ x: f1[i], y: f2[i] });
         }
 
-
         // set charts.js parameters
         const data = {
             datasets: [{
                 label: feature1 + "-" + feature2,
-                backgroundColor: "black",
-                borderColor: "black",
                 data: dataSet,
             }, ],
         };
 
-        //  set anomalies points as red
         data.datasets[0].pointBackgroundColor = [];
         data.datasets[0].pointBorderColor = [];
 
+        //  set all points as black
+        for (let i = 0; i < f1.length; ++i) {
+            data.datasets[0].pointBackgroundColor[i] = "black";
+            data.datasets[0].pointBorderColor[i] = "black";
+        }
+
+        //  set anomalies points as red
         for (let i = 0; i < ano.length; ++i) {
             data.datasets[0].pointBackgroundColor[ano[i]] = "red";
             data.datasets[0].pointBorderColor[ano[i]] = "red";
         }
-
         return data;
     }
 }
 
+function getRange(begin, end) {
+    let range = [];
+    for (; begin < end; begin++) {
+        range.push(String(begin));
+    }
+    return range;
+}
+
 function updateData(chart, id, data, config) {
+    let labels = undefined;
+    let length = data.datasets.length;
+    if (length > 1) {
+        let x_max = 0;
+        for (let i = 0; i < length; i++) {
+            x_max = Math.max(x_max, data.datasets[i].data.length);
+        }
+        labels = getRange(0, x_max);
+    }
+
     if (chart instanceof Chart) {
         removeData(chart);
-        addData(chart, data.labels, data.datasets);
+        addData(chart, labels, data.datasets);
     } else {
+
         chart = new Chart(document.getElementById(id), config);
+        data['labels'] = labels;
         chart['data'] = data;
     }
+
     chart.update();
     chart.resize();
+    chart.resetZoom()
     return chart;
 }
+
 
 function removeData(chart) {
     if (chart.data.labels)
@@ -176,13 +218,14 @@ async function createCharts(id, feature1, feature2) {
     const train = await getTrain(id);
     let creator = new ChartsCreator(train, anomalies);
 
-    chartCol1Data = creator.createFeaturesChart(feature1);
-    chartCol2Data = creator.createFeaturesChart(feature2);
-    chartCorrelationData = creator.createCorrelationChart(feature1, feature2);
+    feature1Data = creator.createFeatureData(feature1, color1);
+    feature2Data = creator.createFeatureData(feature2, color2);
 
-    chartCol1 = updateData(chartCol1, "chartCol1", chartCol1Data, ChartsCreator.singleFeatureConfig);
-    chartCol2 = updateData(chartCol2, "chartCol2", chartCol2Data, ChartsCreator.singleFeatureConfig);
-    chartCorrelation = updateData(chartCorrelation, "chartCorrelation", chartCorrelationData, ChartsCreator.doubleFeatureConfig);
+    featuresDatasets = creator.createFeaturesChart(feature1Data, feature2Data);
+    chartCorrelationDatasets = creator.createCorrelationChart(feature1, feature2);
+
+    chartFeatures = updateData(chartFeatures, "chartFeatures", featuresDatasets, ChartsCreator.singleFeatureConfig);
+    chartCorrelation = updateData(chartCorrelation, "chartCorrelation", chartCorrelationDatasets, ChartsCreator.doubleFeatureConfig);
 
     chartsError = document.getElementById('charts-error');
     charts = document.getElementById('charts');
@@ -196,8 +239,8 @@ async function resetCharts() {
     showElementBlock(chartsError);
     hideElementBlock(charts);
 
-    removeData(chartCol1);
-    removeData(chartCol2);
+    removeData(chartFeatures);
+    // removeData(chartCol2);
     removeData(chartCorrelation);
 }
 
