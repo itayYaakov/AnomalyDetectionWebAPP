@@ -17,9 +17,13 @@ function initTheme() {
     darkSwitch.checked = darkThemeSelected;
     darkThemeSelected ? document.body.setAttribute('data-theme', 'dark') :
         document.body.removeAttribute('data-theme');
+
 }
 
-
+function isDarkMode() {
+    return localStorage.getItem('darkSwitch') !== null &&
+        localStorage.getItem('darkSwitch') === 'dark';
+}
 /**
  * Summary: resetTheme checks if the switch is 'on' or 'off' and if it is toggled
  * on it will set the HTML attribute 'data-theme' to dark so the dark-theme CSS is
@@ -34,7 +38,9 @@ function resetTheme() {
         document.body.removeAttribute('data-theme');
         localStorage.removeItem('darkSwitch');
     }
+
 }
+
 
 initTheme();
 
@@ -43,6 +49,7 @@ window.addEventListener('load', () => {
         initTheme();
         darkSwitch.addEventListener('change', () => {
             resetTheme();
+            ChartsCreator.refreshCharts();
         });
     }
 });

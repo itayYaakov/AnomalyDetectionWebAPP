@@ -3,7 +3,41 @@ chartCorrelation;
 let color1 = getComputedStyle(document.documentElement).getPropertyValue('--material-color-cyan-400');
 let color2 = getComputedStyle(document.documentElement).getPropertyValue('--material-color-light-green-400');
 class ChartsCreator {
-
+    static refreshCharts() {
+        if (chartFeatures instanceof Chart) chartFeatures.update();
+        if (chartCorrelation instanceof Chart) chartCorrelation.update();
+    }
+    static getGridColor() {
+        const COLOR_ON_DARK_MODE = "GhostWhite";
+        const COLOR_ON_LIGHT_MODE = "Gainsboro";
+        return isDarkMode() ? COLOR_ON_DARK_MODE : COLOR_ON_LIGHT_MODE;
+    }
+    static scales = {
+        x: {
+            grid: {
+                display: true,
+                drawBorder: false,
+                drawOnChartArea: true,
+                drawTicks: true,
+                color: function(context) {
+                    return ChartsCreator.getGridColor();
+                },
+                lineWidth: 1
+            },
+        },
+        y: {
+            grid: {
+                display: true,
+                drawBorder: false,
+                drawOnChartArea: true,
+                drawTicks: true,
+                color: function(context) {
+                    return ChartsCreator.getGridColor();
+                },
+                lineWidth: 1
+            },
+        }
+    };
     static singleFeatureConfig = {
         type: "line",
         data: undefined,
@@ -49,7 +83,8 @@ class ChartsCreator {
                     fill: false,
                 },
             },
-        },
+            scales: ChartsCreator.scales
+        }
     };
     static doubleFeatureConfig = {
         type: "scatter",
@@ -94,7 +129,9 @@ class ChartsCreator {
                     fill: false,
                 },
             },
-        },
+            scales: ChartsCreator.scales
+        }
+
     };
 
     constructor(featuresJson, anomaliesJson) {
