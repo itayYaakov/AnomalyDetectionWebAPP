@@ -228,8 +228,8 @@ function addData(chart, labels, datasets) {
 
 async function createCharts(id, feature1, feature2) {
     const anomalies = await getAnomalies(id);
-    const train = await getTrain(id);
-    let creator = new ChartsCreator(train, anomalies);
+    const test = await getTest(id);
+    let creator = new ChartsCreator(test, anomalies);
 
     feature1Data = creator.createFeatureData(feature1, color1);
     feature2Data = creator.createFeatureData(feature2, color2);
