@@ -1,7 +1,6 @@
 const path = require('path');
 const express = require('express');
 const fs = require('fs');
-// const host = 'localhost';
 const host = '0.0.0.0';
 const port = 8080;
 const model = require('../Model/Model.js');
@@ -22,8 +21,6 @@ async function updateData() {
     fs.writeFileSync("data.json", JSON.stringify(data), "utf8");
 }
 
-
-
 app.use(express.static(__dirname))
 app.use("/pages", express.static(path.resolve(__dirname, "..", "..", "frontend", "pages")));
 app.use("/assets", express.static(path.resolve(__dirname, "..", "..", "frontend", "assets")));
@@ -41,12 +38,6 @@ app.get("/*.html", (req, res) => {
     console.log("pathResolve = ", path.resolve(__dirname, "..", "..", "frontend", "pages", "404.html"));
     res.redirect('/pages/404.html');
 });
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-    res.end();
-})
-
 
 
 // backend routes
@@ -133,7 +124,7 @@ function getQueryParams(req) {
 }
 
 app.use("/*", (req, res) => {
-    res.redirect('/');
+    res.sendFile(path.resolve(__dirname, "..", "..", "frontend", "pages", "index.html"));
 });
 
 app.on('error', function(error) {
