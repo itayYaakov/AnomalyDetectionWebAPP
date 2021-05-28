@@ -100,28 +100,26 @@ First we have to distinguish between the finds, and information on screen :
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/valuesOnGraph.PNG?raw=true)
 
-3) The value's graph - top graph, it presents the values of both features at every row of the input. 
-   - **Zoom** - we can zoom in and out and check each value. Just hover your cursor on said graph, and use  ``` CTRL + MouseWheel Up ``` and enjoy the view up close.
-   - **Points** -  when pointed at a spot on the graph, it will provide the feature name of the affiliated graph, and the value the point represents.
-   - **Disable** - there's also the option to disable the display of 1 feature between the two. Clicking on the colour above the graph will get rid of all the values of the feature. That way it's easier to watch one feature's behaviour along the graph.
-    
-The graph also provides different colour for the two features selected, so it will become much easier to understand whose value is it.
+3) **Graphs**
+     Top graph - displays train information (each row from .csv) of the 2 seleced features (from Explore Anomalies) (each feature has a differnt color)
+     Bottom graph - displays combined train informationof the 2 seleced features, with all anomalies points in red.
+   - **Zoom** - You can zoom in/out to check points more cloesly. Just hover your cursor on said graph, and use  ``` MouseWheel Up/Down ``` and enjoy the view up close. You can also drag the cursor to a box shape, this will zoom the graph to the box.
+   - **Tooltip** -  When hovering over a point, a tooltip pops up with the point value and label information.
+   - **Disable/Enable** - You can disable a certein feature from the gaph by simply clicking it's squared colored label (top of the chart). That's makes it easier to watch one feature's behaviour along the graph.
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/linearAndAnomalies.PNG?raw=true)
 
-4) Anomalies & Point graph - bottom graph, shows the points - made by pair of values, each from his own feature, and the same row as the other value. The red dots in the graph represent the anomalies, and we can point to figure out the exact value of that gone-rogue-row.
-
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboardTop.PNG?raw=true)
 
-5) Anomaly/Report counters, Timer, and Last report - at the top of the screen, we can see 4 parameters -
- - **Reports available** - How many reports/operations have the server processed, and ready to give feedback on.
- - **Anomalies found** - How many anomalies found for the current report selected in the Reports' history section.
- - **Last report creation duration** - How much time (in milliseconds) it took for the last request and its operation to be processed by the server until response.
- - **Last report date**.
+4) **Statistics** - at top of dashboard screen:
+ - **Reports available** - How many previous reports/operations has the server processed and are avilable.
+ - **Anomalies found** - How many anomalies features pairs are found in the the current selected report (Reports history section).
+ - **Last report creation duration** - The time took (in milliseconds) between last report request until server response.
+ - **Last report date** - data of last report.
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/leftBar.PNG?raw=true)
 
-6) Left bar - includes the switch between dark/light mode, the test table and train table for the current active report (includes the entire CSV file values and feature names), and a shrink button - reduces the size of the bar.
+5) Left bar - includes the switch between dark/light mode, the test table and train table for the current active report (includes the entire CSV file values and feature names), and a shrink button - reduces the size of the bar.
 
 #### Packages, out source features and final notes
 
