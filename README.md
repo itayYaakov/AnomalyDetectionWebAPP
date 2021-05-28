@@ -29,7 +29,7 @@ Up next, we will have to download the .ZIP file of the app, and extract. Go to t
 
 1. Press the 'Code' tab, and press the 'download' button as shown below
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/codeANDdownloadPressNumbered.png?raw=true)
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/codeANDdownloadPressNumberedShorter.png?raw=true)
 
 2. Go to the extraction folder, from there continue to 'backend' -> 'Server'.
 
@@ -39,9 +39,8 @@ Up next, we will have to download the .ZIP file of the app, and extract. Go to t
 
 4. Type 'node FinalServer.js', and press enter.
 
-You'll then be notified that the server is up and running. 
+The user will be then notified that the server is up and running. 
 
-@@ again, need to activate the server once on my own..
 ### Instructions
 
 #### Connecting to the web app
@@ -82,9 +81,9 @@ In the webpage, we have the option to drag-and-drop the files we need to provide
 
 Without files or detection mode the program will not start. The user will be notified what files/parameters are missing.
 
-#### Results - Anomalies, Tables & Report history
+### Results - Anomalies, Tables & Report history
 
-Analyze :
+Post-Analysis :
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/BigAftermath.png?raw=true)
 
