@@ -50,8 +50,15 @@ response:
 
 request:
 	path: '/detect'
-	parameters: algorithm, threshold, time, trainFileName, testFileName
-	body: { "train" : TrainCSV, "test" : TestCSV }
+	parameters: algorithm 	(regression, hybrid) 
+				threshold 	(a value between 0 and 1) 
+				time 		(the time of the request in ms)
+				trainFileName (name of train CSV file) 
+				testFileName  (name of test CSV file)
+	body: { 
+			"train" : TrainCSV, // text format
+			"test" : TestCSV, // text format
+		}
 
 response:
 	json anomalies object - 
@@ -62,7 +69,14 @@ response:
 				"col_1" : "A",
 				"col_2" : "B",
 				"data" : [1, 2, 4, 5, 19, 20]
-			}
+			},
+			{
+			{
+				"col_1" : "C",
+				"col_2" : "D",
+				"data" : [3, 70, 71, 72]	
+			}.
+			//...
 		]
 	}
 
@@ -85,15 +99,16 @@ response:
 
 request:
 	path: '/reportData'
-	parameters: id, type (== train\test\result)
+	parameters: id   (ID number of an entry; available using /reportsConfigHistory first.)
+				type (train, test, result)
 	body: <none>
 
 response:
 	type == train:
-		files[id]['train']
+		trainCSV in Json format - { 'A' : [...], 'B' : [...] , //...}
 	type == test:
-		files[id]['test']
+		testCSV in Json format - { 'A' : [...], 'B' : [...] , //...}
 	type == result:
-		files[id]['anomalies']
+		anomalies JSON. same from /detect.
 
 -------------------------------------------------
