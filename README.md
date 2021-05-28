@@ -29,11 +29,7 @@ Up next, we will have to download the .ZIP file of the app, and extract. Go to t
 
 1. Press the 'Code' tab, and press the 'download' button as shown below
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/codePress.png?raw=true)
-
-
-
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/download_zipPress.png?raw=true)
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/codeANDdownloadPressNumbered.png?raw=true)
 
 2. Go to the extraction folder, from there continue to 'backend' -> 'Server'.
 
