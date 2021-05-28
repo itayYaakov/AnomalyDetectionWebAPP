@@ -48,10 +48,6 @@
     color: var(--material-color-blue-100) !important;
 }
 
-div#columns-buttons-holder {
-    min-height: 10em;
-}
-
 .chart-container {
     min-height: 40em;
 }

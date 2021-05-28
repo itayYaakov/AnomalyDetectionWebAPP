@@ -84,7 +84,6 @@ var reportHistoryItem = function() {
                 response_date = formatTimeToData(response_time);
                 total_reports = Object.keys(data).length
             } catch (error) {
-                debugger;
                 console.log("Error", error);
             }
         }
@@ -121,6 +120,7 @@ var reportHistoryItem = function() {
                 let item_html_raw = myHTMLTemplate(item);
                 let item_html = htmlToElement(item_html_raw);
 
+                item_html.removeEventListener("click", setHistoryItemActive, false);
                 item_html.addEventListener("click", setHistoryItemActive, false);
 
                 if (!list.firstChild) {
@@ -134,7 +134,6 @@ var reportHistoryItem = function() {
             updateReportsStatics(dataJson);
             restoreLastActiveReport();
         } catch (error) {
-            debugger;
             console.log(error);
             $(list_error).removeClass("d-none").addClass("d-flex");
             $(list).removeClass("d-flex").addClass("d-none");
@@ -142,6 +141,7 @@ var reportHistoryItem = function() {
     }
 
     function setHistoryItemActive(event) {
+        if (event.currentTarget.classList.contains("active")) return;
         var buttonList = document.querySelectorAll("#reports_history > button");
         buttonList.forEach(function(button) {
             var smallTexts = button.querySelectorAll("h6");
@@ -170,60 +170,47 @@ var reportHistoryItem = function() {
     }
 
     async function createButtons(id) {
-        const buttonHolder = document.getElementById("columns-buttons");
-        const buttonHolderError = document.getElementById("columns-buttons-error");
+        const optionsHolderParent = document.getElementById("columns-select-select");
+        const optionsHolder = optionsHolderParent.querySelector(".selectpicker")
+        const optionsHolderError = document.getElementById("columns-select-error");
+        const EmptyOption = document.createElement("option");
         try {
             const response = await getAnomalies(id);
             const anomalies = response['anomalies'];
             const size = anomalies.length;
             $("#statics-anomalies-in-report").text(size);
 
-            buttonHolder.innerHTML = '';
-            let i = 0;
-            while (i < size) {
-                let row = document.createElement("div");
-                $(row).addClass("row").addClass("justify-content-center").addClass("mx-auto");
-                for (var k = 0; k < 4; k++) {
-                    if (i == size) break;
-                    const col_1 = anomalies[i]['col_1'];
-                    const col_2 = anomalies[i]['col_2'];
-                    i++;
-                    let button = document.createElement("button");
-                    button.setAttribute("col_1", col_1);
-                    button.setAttribute("col_2", col_2);
-                    button.addEventListener("click", setColumnsButtonActive, false);
-                    $(button).text(col_1 + "-" + col_2);
-                    $(button).addClass("btn").addClass("btn-gradient").addClass("col-auto").addClass("btn-sm").addClass("mx-2").addClass("my-2");
-                    row.appendChild(button);
-                }
-                buttonHolder.appendChild(row);
+            optionsHolder.innerHTML = '';
+            optionsHolder.appendChild(EmptyOption);
+            for (let i = 0; i < size; i++) {
+                if (i == size) break;
+                const col_1 = anomalies[i]['col_1'];
+                const col_2 = anomalies[i]['col_2'];
+                const name = col_1 + "-" + col_2;
+                const id = "anomalies_option_" + i;
+
+                let option = document.createElement("option");
+                option.setAttribute("col_1", col_1);
+                option.setAttribute("col_2", col_2);
+                option.setAttribute("data-subtext", col_2);
+                option.setAttribute("id", id);
+                option.setAttribute("value", id);
+                $(option).text(col_1);
+                optionsHolder.appendChild(option);
             }
 
-            hideElementFlex(buttonHolderError);
+            hideElementFlex(optionsHolderError);
+            showElementFlex(optionsHolderParent);
+            optionsHolder.removeEventListener("change", setColumnsButtonActive);
+            optionsHolder.addEventListener("change", setColumnsButtonActive);
+            console.log("Refresh");
+            $(optionsHolder).selectpicker("refresh").trigger("change");
         } catch (error) {
             console.log(error);
-            hideElementFlex(buttonHolderError);
-            buttonHolder.innerHTML = '';
+            hideElementFlex(optionsHolderError);
+            optionsHolder.innerHTML = '';
         }
         return;
-    }
-
-    async function setColumnsButtonActive(event) {
-        // debugger;
-        const buttonHolder = document.getElementById("columns-buttons");
-        buttonHolder.querySelectorAll(".btn").forEach(function(button) {
-            // remove active class from all buttons
-            $(button).removeClass("active");
-        });
-        // add active class to the selected button
-        let event_button = event.currentTarget;
-        event_button.classList.add("active");
-        const col_1 = event_button.getAttribute("col_1");
-        const col_2 = event_button.getAttribute("col_2");
-        const id = sessionStorage.getItem("selectedId");
-        if (id) {
-            createCharts(id, col_1, col_2);
-        }
     }
 
     async function updateSelectedReport(button) {
@@ -245,5 +232,18 @@ $(document).ready(function() {
     var pg = reportHistoryItem();
     pg.init();
 });
+
+async function setColumnsButtonActive(element) {
+    if (element instanceof Event) return;
+    let selected_option = document.getElementById($('.selectpicker').val())
+    if (!selected_option) return;
+    const col_1 = selected_option.getAttribute("col_1");
+    const col_2 = selected_option.getAttribute("col_2");
+    const id = sessionStorage.getItem("selectedId");
+    if (id) {
+        console.log("Change A");
+        createCharts(id, col_1, col_2);
+    }
+}
 
 //# sourceURL=reportHistoryItem.js

@@ -173,7 +173,6 @@ class ChartsCreator {
         let ano = this.anomalies[feature1 + "-" + feature2];
 
         let dataSet = [];
-
         for (let i = 0; i < f1.length; ++i) {
             dataSet.push({ x: f1[i], y: f2[i] });
         }
