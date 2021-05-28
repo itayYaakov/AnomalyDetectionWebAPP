@@ -123,9 +123,14 @@ The graph also provides different colour for the two features selected, so it wi
 
 6) Left bar - includes the switch between dark/light mode, the test table and train table for the current active report (includes the entire CSV file values and feature names), and a shrink button - reduces the size of the bar.
 
-#### Packages and out source features 
+#### Packages, out source features and final notes
 
 @@ NEED TO ADD EXAMPLE FOR EACH FEATURE
+
+##### Using the API through code
+
+The **httpRequests.log** file contains a detailed explanation on the API's requests and responses.
+If the host wishes to use the API through code, check it out and start detecting anomalies in your CSV files!
 
 @@ express
 @@ node.js
