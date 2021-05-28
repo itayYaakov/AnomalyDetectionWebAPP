@@ -52,7 +52,7 @@ To enter as the host, simply type 'localhost:8080' to enter the app.
 @@ Can you enter as another PC on the network??
 
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/webAdress.PNG?raw=true)
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/whitenedWebAdress.png?raw=true)
 
 
 #### File & Settings selection 
