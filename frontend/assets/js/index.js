@@ -53,6 +53,16 @@ const router = async() => {
 window.addEventListener("popstate", router);
 
 document.addEventListener("DOMContentLoaded", () => {
+    let url = location.pathname;
+    if (url === "/") url = "/dashboard"
+    let nav_links = $("#" + "accordionSidebar")[0].querySelectorAll("a[href='" + url + "']");
+    if (nav_links.length > 0) {
+        document.querySelectorAll(".nav-link").forEach(function(item) {
+            item.classList.remove("active");
+        });
+        nav_links[0].classList.add("active");
+    }
+
     document.querySelectorAll(".nav-item").forEach(function(item) {
         item.addEventListener("click", e => {
             e.preventDefault();
@@ -68,4 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
 router();
+
+//# sourceURL=index.js
