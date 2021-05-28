@@ -1,6 +1,6 @@
 # Anomaly Detection Web Application
 
-This web application, as the name suggests, detecting any irregularities - abnormal data resources and report back to the user - all through your client's browser. 
+This web application detects any irregularities - abnormal data resources and report back to the user - all through your client's browser. 
 
 It's target market is wide, and is not restricted only for analysts, for it's output is accessible and easy to read.
 
@@ -47,12 +47,7 @@ The user will be then notified that the server is up and running.
 
 After the server is running, you can enter from any web browser -
 
-To enter as the host, simply type 'localhost:8080' to enter the app.
-
-@@ Can you enter as another PC on the network??
-
-
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/whitenedWebAdress.png?raw=true)
+To enter as the host, simply type 'localhost:8080' to enter the app. It will automatically redirect you to the '/dashboard' page.
 
 
 #### File & Settings selection 
@@ -73,11 +68,11 @@ In the webpage, we have the option to drag-and-drop the files we need to provide
    
 4. Select your detection mode -
    
-   a. Regression - detecting each anomaly with a linear approach to the correlating features - representing their correlation with a line, or linear equation.
+   a. Regression - detecting each anomaly with a linear approach to the correlating features. any pair of values that consist a point, and are further away from the calculated linear equation by a certain parameter - will be considered as an anomaly.
    
-   b. Hybrid - changing its presentation of correlation for the following criteria :
-   1)  if the correlation of the said features is between 0,5 and our threshold input, it will represent the correlation in a circular approach.
-   2)  if the correlation is equal OR higher than the input of the threshold - it will represent the correlation in a linear approach as if it's the 'Regression' mode
+   b. Hybrid - changing its approach for the following criteria :
+   1)  if the correlation of the said features is between 0,5 and our threshold input, it will change into a circular approach - any pair of values (from first and second features) that consist a point, and are further away from the center than the calculated radius - are considered anomaly.
+   2)  if the correlation is equal OR higher than the input of the threshold - it will change into a linear approach as if it's the 'Regression' mode.
 
 Without files or detection mode the program will not start. The user will be notified what files/parameters are missing.
 
@@ -108,12 +103,13 @@ First we have to distinguish between the finds, and information on screen :
 3) The value's graph - top graph, it presents the values of both features at every row of the input. 
    - **Zoom** - we can zoom in and out and check each value. Just hover your cursor on said graph, and use  ``` CTRL + MouseWheel Up ``` and enjoy the view up close.
    - **Points** -  when pointed at a spot on the graph, it will provide the feature name of the affiliated graph, and the value the point represents.
+   - **Disable** - there's also the option to disable the display of 1 feature between the two. Clicking on the colour above the graph will get rid of all the values of the feature. That way it's easier to watch one feature's behaviour along the graph.
     
 The graph also provides different colour for the two features selected, so it will become much easier to understand whose value is it.
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/linearAndAnomalies.PNG?raw=true)
 
-4) Anomalies & Linear/Circle graph - bottom graph, shows the line OR circle representing the correlation of both features. The red dots in the graph represent the anomalies, and we can point to figure out the exact value of that gone-rogue-row.
+4) Anomalies & Point graph - bottom graph, shows the points - made by pair of values, each from his own feature, and the same row as the other value. The red dots in the graph represent the anomalies, and we can point to figure out the exact value of that gone-rogue-row.
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboardTop.PNG?raw=true)
 
@@ -127,8 +123,14 @@ The graph also provides different colour for the two features selected, so it wi
 
 6) Left bar - includes the switch between dark/light mode, the test table and train table for the current active report (includes the entire CSV file values and feature names), and a shrink button - reduces the size of the bar.
 
-#### Packages and out source features
+#### Packages and out source features 
 
+@@ NEED TO ADD EXAMPLE FOR EACH FEATURE
+
+@@ express
+@@ node.js
 @@ dark mode
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/DarkMode.png?raw=true)
 @@ graphs
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/graphs.png?raw=true)
 @@ css UI?
