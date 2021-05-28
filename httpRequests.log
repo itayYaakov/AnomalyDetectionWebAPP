@@ -56,8 +56,8 @@ request:
 				trainFileName (name of train CSV file) 
 				testFileName  (name of test CSV file)
 	body: { 
-			"train" : TrainCSV, // text format
-			"test" : TestCSV, // text format
+			"train" : TrainCSV, // JSON format!!!
+			"test" : TestCSV, // JSON format!!!
 		}
 
 response:
