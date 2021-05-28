@@ -1,7 +1,8 @@
 const path = require('path');
 const express = require('express');
 const fs = require('fs');
-const host = 'localhost';
+// const host = 'localhost';
+const host = '0.0.0.0';
 const port = 8080;
 const model = require('../Model/Model.js');
 const app = express();
@@ -15,8 +16,8 @@ let files = modelData['files'];
 async function updateData() {
     await null;
     let data = {
-        "configs" : configs,
-        "files" : files
+        "configs": configs,
+        "files": files
     };
     fs.writeFileSync("data.json", JSON.stringify(data), "utf8");
 }

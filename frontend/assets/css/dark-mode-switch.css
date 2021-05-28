@@ -3,13 +3,18 @@
     color: var(--color-text-primary);
 }
 
+[data-theme="dark"] a.border.rounded.d-inline.scroll-to-top {
+    z-index: 2 !important;
+}
+
 [data-theme="dark"] .btn-gradient {
     color: var(--color-text-primary);
     box-shadow: 2px 1000px 1px var(--color-bg-canvas) inset;
 }
 
-[data-theme="dark"] a.border.rounded.d-inline.scroll-to-top {
-    z-index: 2 !important;
+[data-theme="dark"] .btn-gradient:hover {
+    box-shadow: 2px 1000px 1px rgb(5 5 5 / 45%) inset;
+    color: white;
 }
 
 [data-theme="dark"] .btn-gradient.active {

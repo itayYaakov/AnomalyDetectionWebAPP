@@ -39,15 +39,14 @@ input[type="radio"]:checked+.btn-cyan {
     color: #858796;
     border: solid 3px transparent;
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(-45deg, #1b9759 0%, #19627c 100%);
-    /* background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(-45deg, #2ae88a 0%, #08aeea 100%); */
     background-origin: border-box;
     background-clip: content-box, border-box;
     box-shadow: 2px 1000px 1px white inset;
 }
 
 .btn-gradient:hover {
-    box-shadow: 2px 1000px 1px rgb(19 26 35 / 55%) inset;
-    color: black;
+    box-shadow: 2px 1000px 1px rgb(213 213 213 / 17%) inset;
+    color: white;
 }
 
 .btn-gradient.active {

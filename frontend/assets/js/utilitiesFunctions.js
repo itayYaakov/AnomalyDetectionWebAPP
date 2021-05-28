@@ -72,4 +72,8 @@ function showElementBlock(elem) {
     $(elem).removeClass("d-none").addClass("d-block");
 }
 
+function getCssVariable(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name);
+}
+
 //# sourceURL=utilitiesFunctions.js

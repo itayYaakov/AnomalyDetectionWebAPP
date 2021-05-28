@@ -67,8 +67,7 @@ var reportHistoryItem = function() {
         const id = sessionStorage.getItem("selectedId");
         if (id) {
             const button_id = button_name + id;
-            $("#" + button_id).addClass("active");
-            createButtons(id);
+            $("#" + button_id).click();
         }
     }
 
@@ -170,23 +169,17 @@ var reportHistoryItem = function() {
         updateSelectedReport(event.currentTarget);
     }
 
-    function map(x, in_min, in_max, out_min, out_max) {
-        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-    }
-
     async function createButtons(id) {
+        const buttonHolder = document.getElementById("columns-buttons");
+        const buttonHolderError = document.getElementById("columns-buttons-error");
         try {
-            const buttonHolder = document.getElementById("columns-buttons");
-            const buttonHolderError = document.getElementById("columns-buttons-error");
-
-            buttonHolder.innerHTML = '';
-
             const response = await getAnomalies(id);
             const anomalies = response['anomalies'];
             const size = anomalies.length;
             $("#statics-anomalies-in-report").text(size);
 
-            var i = 0;
+            buttonHolder.innerHTML = '';
+            let i = 0;
             while (i < size) {
                 let row = document.createElement("div");
                 $(row).addClass("row").addClass("justify-content-center").addClass("mx-auto");
@@ -213,10 +206,6 @@ var reportHistoryItem = function() {
             buttonHolder.innerHTML = '';
         }
         return;
-    }
-
-    async function updateGraphs(id, col_1, col_2) {
-        console.log(`id=${id} col_1=${col_1} col_2=${col_2}`);
     }
 
     async function setColumnsButtonActive(event) {

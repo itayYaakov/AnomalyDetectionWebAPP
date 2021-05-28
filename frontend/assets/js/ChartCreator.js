@@ -1,15 +1,15 @@
 chartFeatures;
 chartCorrelation;
-let color1 = getComputedStyle(document.documentElement).getPropertyValue('--material-color-cyan-400');
-let color2 = getComputedStyle(document.documentElement).getPropertyValue('--material-color-light-green-400');
+let color1 = getCssVariable('--material-color-cyan-400');
+let color2 = getCssVariable('--material-color-light-green-400');
 class ChartsCreator {
     static refreshCharts() {
         if (chartFeatures instanceof Chart) chartFeatures.update();
         if (chartCorrelation instanceof Chart) chartCorrelation.update();
     }
     static getGridColor() {
-        const COLOR_ON_DARK_MODE = "GhostWhite";
-        const COLOR_ON_LIGHT_MODE = "Gainsboro";
+        const COLOR_ON_DARK_MODE = getCssVariable("--material-color-grey-800");
+        const COLOR_ON_LIGHT_MODE = getCssVariable("--material-color-grey-300");
         return isDarkMode() ? COLOR_ON_DARK_MODE : COLOR_ON_LIGHT_MODE;
     }
     static scales = {
@@ -73,9 +73,9 @@ class ChartsCreator {
                     fontSize: 18,
                 },
             },
-            backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-bg-color'),
-            borderColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-border-color'),
-            // borderWidth: getComputedStyle(document.documentElement).getPropertyValue('--chart-border-width'),
+            backgroundColor: getCssVariable('--chart-bg-color'),
+            borderColor: getCssVariable('--chart-border-color'),
+            // borderWidth: getCssVariable('--chart-border-width'),
             responsive: true,
             elements: {
                 line: {
@@ -289,9 +289,12 @@ async function resetCharts() {
     showElementBlock(chartsError);
     hideElementBlock(charts);
 
-    removeData(chartFeatures);
-    // removeData(chartCol2);
-    removeData(chartCorrelation);
+    if (chartFeatures instanceof Chart) {
+        removeData(chartFeatures);
+    }
+    if (chartCorrelation instanceof Chart) {
+        removeData(chartCorrelation);
+    }
 }
 
 //# sourceURL=ChartCreator.js
