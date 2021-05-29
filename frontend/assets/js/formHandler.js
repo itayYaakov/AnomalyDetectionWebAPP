@@ -155,7 +155,11 @@ var formHandler = function() {
             let name = "anomalies_" + id;
 
             // store latest detect result
-            localStorage.setItem(name, JSON.stringify(data));
+            try {
+                localStorage.setItem(name, JSON.stringify(data));
+            } catch (error) {
+                console.log("Can't store anomalies, error:", error)
+            }
 
             // check if item is saved - if not, clear storage and try again
             if (!localStorage.hasOwnProperty(name)) {
@@ -164,9 +168,17 @@ var formHandler = function() {
             }
             // try to store train and test json as well
             name = "train_" + id;
-            localStorage.setItem(name, JSON.stringify(trainFileJson));
+            try {
+                localStorage.setItem(name, JSON.stringify(trainFileJson));
+            } catch (error) {
+                console.log("Can't store trainFileJson, error:", error)
+            }
             name = "test_" + id;
-            localStorage.setItem(name, JSON.stringify(testFileJson));
+            try {
+                localStorage.setItem(name, JSON.stringify(testFileJson));
+            } catch (error) {
+                console.log("Can't store testFileJson, error:", error)
+            }
 
             const newReport = new CustomEvent("newReport");
             document.querySelector("#event-manager").dispatchEvent(newReport);
