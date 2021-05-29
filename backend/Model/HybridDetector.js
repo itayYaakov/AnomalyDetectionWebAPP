@@ -10,14 +10,14 @@ class HybridDetector extends reg.RegressionDetector {
 
     isAnomaly(x, y, c) {
         return (c.correlation >= 0.9 && super.isAnomaly(x, y, c)) ||
-            (c.correlation < 0.9 && c.correlation > 0.5 &&
+            (c.correlation < 0.9 && c.correlation >= this.threshold &&
                 (distance(x, y, c.circle.x, c.circle.y) > c.circle.r))
     }
 
     learnNormal(json) {
         super.learnNormal(json);
         for (var c of this.cf) {
-            if (c.correlation > this.threshold && c.correlation < 0.9) {
+            if (c.correlation >= this.threshold && c.correlation < 0.9) {
                 c.circle = makeCircle(super.makePoints(json, c.feature1, c.feature2));
                 c.circle.r *= 1.1;
             }
