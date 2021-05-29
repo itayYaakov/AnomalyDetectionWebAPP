@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="form-group"><label class="big pull-left"><strong>Threshold</strong><br></label><label id="threshold_label" class="big pull-right" for="threshold_range">0.7</label><input class="form-control-range" type="range" id="threshold_range" min="0.0"
-                                max="1.0" step="0.05" value="0.7" for="threshold_label">
+                                max="0.85" step="0.05" value="0.7" for="threshold_label">
                         </div>
                         <div class="form-group">
                             <div class="row"><label class="big col text-center"><strong>Upload Train csv file</strong><br></label><label class="big col text-center"><strong>Upload Test csv file</strong><br></label></div>
@@ -128,15 +128,6 @@
                 </div>
             </div>
             <div class="card shadow mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h6 class="text-primary font-weight-bold m-0">Explore Anomalies</h6>
-                </div>
-                <div id="columns-buttons-holder" class="card-body d-flex align-items-center justify-content-center">
-                    <div id="columns-buttons-error" class="align-middle"><label class="text-center justify-content-center d-flex" id="anomalies_pie_chart_error">No data to be shown.<br>Please select a Report item from list.<br></label></div>
-                    <div id="columns-buttons"></div>
-                </div>
-            </div>
-            <div class="card shadow mb-4">
                 <div class="card-header card-header d-flex justify-content-between align-items-center">
                     <h6 class="text-primary font-weight-bold m-0">Reports History</h6>
                 </div>
@@ -150,6 +141,18 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+            <div class="card shadow mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">Explore Anomalies</h6>
+                </div>
+                <div id="columns-select-holder" class="card-body">
+                    <div id="columns-select-error" class="align-middle"><label class="text-center justify-content-center d-flex" id="anomalies_pie_chart_error">No data to be shown.<br>Please select a Report item from list.<br></label></div>
+                    <div id="columns-select-select" class="w-100 d-none">
+                        <select id="empid" class="selectpicker show-tick" data-width="100%" data-style="btn-lg" onchange="setColumnsButtonActive(this)" data-live-search="true">
+                        </select>
+                    </div>
+                </div>
+            </div>
             <div class="card shadow mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h6 class="text-primary font-weight-bold m-0">Train Properties Graph View</h6>
