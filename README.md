@@ -86,7 +86,8 @@ First we have to distinguish between the finds, and information on screen :
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/historyReport.PNG?raw=true)
 
-1) The reports' history - can be seen on the lower-left side of the web app. This will be kept up-to-date with any report we might add, and we can traverse between the old and new reports at any given moment. It provides the follows :
+1) **The reports' history**
+can be seen on the lower-left side of the web app. This will be kept up-to-date with any report we might add, and we can traverse between the old and new reports at any given moment. It provides the follows :
 
  - **Time stamp** - when did the analysis occur, and the time the server finished calculating its response.
    
@@ -94,15 +95,17 @@ First we have to distinguish between the finds, and information on screen :
    
  - **File names**.
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/exploreAnomalies.PNG?raw=true)
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/EXPLOREaNOMALIES.PNG?raw=true)
 
-2) The Explore Anomalies section - above the history report, we can see the name of each feature and his significant other - his most correlated other feature. By pressing one of the options, we will be given information via graphs about the anomalies and the values of the said features.
+2) **The Explore Anomalies section**
+
+above the history report, we can see the name of each feature and his significant other - his most correlated other feature. By pressing one of the options, we will be given information via graphs about the anomalies and the values of the said features.
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/valuesOnGraph.PNG?raw=true)
 
 3) **Graphs**
-     Top graph - displays train information (each row from .csv) of the 2 seleced features (from Explore Anomalies) (each feature has a differnt color)
-     Bottom graph - displays combined train informationof the 2 seleced features, with all anomalies points in red.
+*Top graph* - displays train information (each row from .csv) of the 2 seleced features (from Explore Anomalies) (each feature has a differnt color)
+*Bottom graph* - displays combined train informationof the 2 seleced features, with all anomalies points in red.
    - **Zoom** - You can zoom in/out to check points more cloesly. Just hover your cursor on said graph, and use  ``` MouseWheel Up/Down ``` and enjoy the view up close. You can also drag the cursor to a box shape, this will zoom the graph to the box.
    - **Tooltip** -  When hovering over a point, a tooltip pops up with the point value and label information.
    - **Disable/Enable** - You can disable a certein feature from the gaph by simply clicking it's squared colored label (top of the chart). That's makes it easier to watch one feature's behaviour along the graph.
@@ -111,7 +114,8 @@ First we have to distinguish between the finds, and information on screen :
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboardTop.PNG?raw=true)
 
-4) **Statistics** - at top of dashboard screen:
+4) **Statistics**
+at top of dashboard screen:
  - **Reports available** - How many previous reports/operations has the server processed and are avilable.
  - **Anomalies found** - How many anomalies features pairs are found in the the current selected report (Reports history section).
  - **Last report creation duration** - The time took (in milliseconds) between last report request until server response.
@@ -119,7 +123,8 @@ First we have to distinguish between the finds, and information on screen :
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/leftBar.PNG?raw=true)
 
-5) Left bar - includes the switch between dark/light mode, the test table and train table for the current active report (includes the entire CSV file values and feature names), and a shrink button - reduces the size of the bar.
+5) **Left bar**
+includes the switch between dark/light mode, the test table and train table for the current active report (includes the entire CSV file values and feature names), and a shrink button - reduces the size of the bar.
 
 #### Packages, out source features and final notes
 
