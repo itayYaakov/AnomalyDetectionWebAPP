@@ -10,7 +10,7 @@ After providing a second csv file meant for testing any anomalies there might be
 
 ## Preview 
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/preview.png?raw=true)
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode.PNG?raw=true)
 
 
 @@ need to ask for requirements - which installations (and check for their direct instructions)
@@ -80,7 +80,7 @@ Without files or detection mode the program will not start. The user will be not
 
 Post-Analysis :
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/BigAftermath.png?raw=true)
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode2.png?raw=true)
 
 First we have to distinguish between the finds, and information on screen :
 
