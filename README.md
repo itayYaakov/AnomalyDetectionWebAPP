@@ -16,9 +16,6 @@ Desktop:
 Mobile support:
 <img width="1375" alt="MobileSupport" src="https://user-images.githubusercontent.com/35079630/120120046-aeb72400-c1a3-11eb-92b6-4ef58903e6ee.png">
 
-
-@@ need to ask for requirements - which installations (and check for their direct instructions)
-
 ### Requirements and installation
 
 Before using this web app, and run the server for your clients, we will need the to install the following :
