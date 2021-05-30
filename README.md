@@ -10,7 +10,7 @@ After providing a second csv file meant for testing any anomalies there might be
 
 ## Preview 
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/preview.png?raw=true)
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode.PNG?raw=true)
 
 
 @@ need to ask for requirements - which installations (and check for their direct instructions)
@@ -38,6 +38,8 @@ Up next, we will have to download the .ZIP file of the app, and extract. Go to t
  - Linux - Right-click on a free space within the folder, and select 'Open in Terminal'.
 
 4. Type 'node FinalServer.js', and press enter.
+
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/cmdPressEnter2.PNG?raw=true)
 
 The user will be then notified that the server is up and running. 
 
@@ -80,13 +82,14 @@ Without files or detection mode the program will not start. The user will be not
 
 Post-Analysis :
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/BigAftermath.png?raw=true)
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode2.png?raw=true)
 
 First we have to distinguish between the finds, and information on screen :
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/historyReport.PNG?raw=true)
 
-1) The reports' history - can be seen on the lower-left side of the web app. This will be kept up-to-date with any report we might add, and we can traverse between the old and new reports at any given moment. It provides the follows :
+1) **The reports' history**
+can be seen on the lower-left side of the web app. This will be kept up-to-date with any report we might add, and we can traverse between the old and new reports at any given moment. It provides the follows :
 
  - **Time stamp** - when did the analysis occur, and the time the server finished calculating its response.
    
@@ -94,15 +97,17 @@ First we have to distinguish between the finds, and information on screen :
    
  - **File names**.
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/exploreAnomalies.PNG?raw=true)
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/EXPLOREaNOMALIES.PNG?raw=true)
 
-2) The Explore Anomalies section - above the history report, we can see the name of each feature and his significant other - his most correlated other feature. By pressing one of the options, we will be given information via graphs about the anomalies and the values of the said features.
+2) **The Explore Anomalies section**
+
+above the history report, we can see the name of each feature and his significant other - his most correlated other feature. By pressing one of the options, we will be given information via graphs about the anomalies and the values of the said features.
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/valuesOnGraph.PNG?raw=true)
 
 3) **Graphs**
-     Top graph - displays train information (each row from .csv) of the 2 seleced features (from Explore Anomalies) (each feature has a differnt color)
-     Bottom graph - displays combined train informationof the 2 seleced features, with all anomalies points in red.
+*Top graph* - displays train information (each row from .csv) of the 2 seleced features (from Explore Anomalies) (each feature has a differnt color)
+*Bottom graph* - displays combined train informationof the 2 seleced features, with all anomalies points in red.
    - **Zoom** - You can zoom in/out to check points more cloesly. Just hover your cursor on said graph, and use  ``` MouseWheel Up/Down ``` and enjoy the view up close. You can also drag the cursor to a box shape, this will zoom the graph to the box.
    - **Tooltip** -  When hovering over a point, a tooltip pops up with the point value and label information.
    - **Disable/Enable** - You can disable a certein feature from the gaph by simply clicking it's squared colored label (top of the chart). That's makes it easier to watch one feature's behaviour along the graph.
@@ -111,7 +116,8 @@ First we have to distinguish between the finds, and information on screen :
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboardTop.PNG?raw=true)
 
-4) **Statistics** - at top of dashboard screen:
+4) **Statistics**
+at top of dashboard screen:
  - **Reports available** - How many previous reports/operations has the server processed and are avilable.
  - **Anomalies found** - How many anomalies features pairs are found in the the current selected report (Reports history section).
  - **Last report creation duration** - The time took (in milliseconds) between last report request until server response.
@@ -119,21 +125,50 @@ First we have to distinguish between the finds, and information on screen :
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/leftBar.PNG?raw=true)
 
-5) Left bar - includes the switch between dark/light mode, the test table and train table for the current active report (includes the entire CSV file values and feature names), and a shrink button - reduces the size of the bar.
+5) **Left bar**
+includes the switch between dark/light mode, the test table and train table for the current active report (includes the entire CSV file values and feature names), and a shrink button - reduces the size of the bar.
 
 #### Packages, out source features and final notes
 
-@@ NEED TO ADD EXAMPLE FOR EACH FEATURE
 
 ##### Using the API through code
 
 The **httpRequests.log** file contains a detailed explanation on the API's requests and responses.
 If the host wishes to use the API through code, check it out and start detecting anomalies in your CSV files!
 
-@@ express
-@@ node.js
-@@ dark mode
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/DarkMode.png?raw=true)
-@@ graphs
+response from the server [javascript object] : 
+
+{
+    "id" : 128782175,
+    "anomalies" : [
+    {
+        "col_1" : "A",
+        "col_2" : "B",
+        "data" : [1, 2, 3, 5, 8, 9, ...]
+    },
+    {
+        "col_1" : "C",
+        "col_2" : "D",
+        "data" : [10, 11, 12, ...]
+    },
+    ...
+    ]
+}
+
+*dark-mode-switch* - set dark mode button, with SB Admin 2 4.0.5 (Theme) : 
+
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode.PNG?raw=true)
+
+Graphs - (1) *chart.js* - vivid graphs (2) *chartjs-plugin-zoom* - enable **zoom** in chart.js
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/graphs.png?raw=true)
-@@ css UI?
+
+jquery framework
+
+bootstrap - responsive site across different views
+
+bootstrap-select - upgraded select element
+
+font-awesome - icons
+
+Express - web application framework
+
