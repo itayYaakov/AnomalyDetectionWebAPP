@@ -128,17 +128,45 @@ includes the switch between dark/light mode, the test table and train table for 
 
 #### Packages, out source features and final notes
 
-@@ NEED TO ADD EXAMPLE FOR EACH FEATURE
 
 ##### Using the API through code
 
 The **httpRequests.log** file contains a detailed explanation on the API's requests and responses.
 If the host wishes to use the API through code, check it out and start detecting anomalies in your CSV files!
 
-@@ express
-@@ node.js
-@@ dark mode
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/DarkMode.png?raw=true)
-@@ graphs
+response from the server [javascript object] : 
+
+{
+    "id" : 128782175,
+    "anomalies" : [
+    {
+        "col_1" : "A",
+        "col_2" : "B",
+        "data" : [1, 2, 3, 5, 8, 9, ...]
+    },
+    {
+        "col_1" : "C",
+        "col_2" : "D",
+        "data" : [10, 11, 12, ...]
+    },
+    ...
+    ]
+}
+
+*dark-mode-switch* - set dark mode button, with SB Admin 2 4.0.5 (Theme) : 
+
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode.PNG?raw=true)
+
+Graphs - (1) *chart.js* - vivid graphs (2) *chartjs-plugin-zoom* - enable **zoom** in chart.js
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/graphs.png?raw=true)
-@@ css UI?
+
+jquery framework
+
+bootstrap - responsive site across different views
+
+bootstrap-select - upgraded select element
+
+font-awesome - icons
+
+Express - web application framework
+
