@@ -39,6 +39,8 @@ Up next, we will have to download the .ZIP file of the app, and extract. Go to t
 
 4. Type 'node FinalServer.js', and press enter.
 
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/cmdPressEnter2.PNG?raw=true)
+
 The user will be then notified that the server is up and running. 
 
 ### Instructions
