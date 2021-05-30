@@ -11,10 +11,15 @@ And 2 csv files (1st one for normal data, so we can detet the standarts, and a 2
 That's All!
 
 ## Preview 
-Desktop:
-<img width="1920" alt="Screenshot 2021-05-31 000510" src="https://user-images.githubusercontent.com/35079630/120120094-e4f4a380-c1a3-11eb-9263-769d02df3f7d.png">
-Mobile support:
-<img width="1375" alt="MobileSupport" src="https://user-images.githubusercontent.com/35079630/120120046-aeb72400-c1a3-11eb-92b6-4ef58903e6ee.png">
+Desktop:  
+<p align="center">
+  <img width="700" src="https://user-images.githubusercontent.com/35079630/120120094-e4f4a380-c1a3-11eb-9263-769d02df3f7d.png">  
+</p>
+Mobile support:  
+<p align="center">
+  <img width="700" height="600" alt="MobileSupport" src="https://user-images.githubusercontent.com/35079630/120120046-aeb72400-c1a3-11eb-92b6-4ef58903e6ee.png">
+</p>
+
 
 
 @@ need to ask for requirements - which installations (and check for their direct instructions)
@@ -29,9 +34,8 @@ Before using this web app, and run the server for your clients, we will need the
 
 Up next, clone this repository or download the .ZIP file of the app, and extract. Go to the [repository's webpage](https://github.com/itayYaakov/AnomalyDetectionWebAPP), and follow the instructions :
 
-1. Press the 'Code' tab, and press the 'download' button as shown below
-
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/codeANDdownloadPressNumberedShorter.png?raw=true)
+1. Press the 'Code' tab, and press the 'download' button as shown below  
+<img width="400" src="https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/codeANDdownloadPressNumberedShorter.png">
 
 2. Go to the extraction folder, from there continue to 'backend' -> 'Server'.
 
@@ -39,9 +43,8 @@ Up next, clone this repository or download the .ZIP file of the app, and extract
  - Windows - Press the path-bar, and write down 'cmd', press enter and you'll be met with the Command Prompt to our directory.
  - Linux - Right-click on a free space within the folder, and select 'Open in Terminal'.
 
-4. Type 'node FinalServer.js', and press enter.
-
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/cmdPressEnter2.PNG?raw=true)
+4. Type 'node FinalServer.js', and press enter.  
+<img width="500" src="https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/cmdPressEnter2.PNG">
 
 The user will be then notified that the server is up and running. 
 
@@ -60,13 +63,15 @@ To enter as the host, simply type 'localhost:8080' (or <host_ip>:8080 on other c
 
 In the webpage, we have the option to drag-and-drop the files we need to provide -
 
-1. Select the train file in your computer, and drag into the 'train csv' box. (Alternative - choose it by clicking 'Browse file' button)
+1. Select the train file in your computer, and drag into the 'train csv' box. (Alternative - choose it by clicking 'Browse file' button)  
+   <p align="center">
+     <img width="400" src="https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dragAndDropTrain.png">
+   </p>
    
-   ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dragAndDropTrain.png?raw=true)
-   
-2. Now do the same with the test file - select the test file and drag  it into the 'test csv' box.
-
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dragAndDropTest.png?raw=true)
+2. Now do the same with the test file - select the test file and drag  it into the 'test csv' box.  
+   <p align="center">
+     <img width="400" src="https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dragAndDropTest.png">
+   </p>
    
 3. Drag and select your desired threshold level - as the threshold level grows higher, the requirement for correlation gets more demanding. The default threshold is 0.7.
    
@@ -104,9 +109,12 @@ can be seen on the lower-left side of the web app. This will be kept up-to-date 
 A drop-down list of all the features that has a correlated feature. The small text specifies the other most correlated feature.
 When selecting a pair of features from this list - the graphs will be updated accordingly.
 
-3) **Graphs**
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/valuesOnGraph.PNG?raw=true)
-*Top graph* - displays train information (each row from .csv) of the 2 seleced features (from Explore Anomalies) (each feature has a differnt color)
+3) **Graphs**  
+<p align="center">
+  <img width="600" height="400" src="https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/valuesOnGraph.PNG">
+</p>
+
+*Top graph* - displays train information (each row from .csv) of the 2 seleced features (from Explore Anomalies) (each feature has a differnt color)  
 *Bottom graph* - displays combined train informationof the 2 seleced features, with all anomalies points in red.
    - **Zoom** - You can zoom in/out to check points more cloesly. Just hover your cursor on said graph, and use  ``` MouseWheel Up/Down ``` and enjoy the view up close. You can also drag the cursor to a box shape, this will zoom the graph to the box.
    - **Tooltip** -  When hovering over a point, a tooltip pops up with the point value and label information.
@@ -114,19 +122,20 @@ When selecting a pair of features from this list - the graphs will be updated ac
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/linearAndAnomalies.PNG?raw=true)
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboardTop.PNG?raw=true)
-
 4) **Statistics**
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboardTop.PNG?raw=true)
 at top of dashboard screen:
  - **Reports available** - How many previous reports/operations has the server processed and are avilable.
  - **Anomalies found** - How many anomalies features pairs are found in the the current selected report (Reports history section).
  - **Last report creation duration** - The time took (in milliseconds) between last report request until server response.
  - **Last report date** - data of last report.
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/leftBar.PNG?raw=true)
-
-5) **Left bar**
-includes the switch between dark/light mode, the test table and train table for the current active report (includes the entire CSV file values and feature names), and a shrink button - reduces the size of the bar.
+5) **Navigation bar**  
+   <img width="151" alt="MobileSupport" src="https://user-images.githubusercontent.com/35079630/120120612-f8edd480-c1a6-11eb-92a1-a7f991473aa1.png">  
+   **Pages** Links to Dashboard (homepage), Train table and Test Table. both tables store the same data as the .csv table (the tables content changes upon selecting different report item in Reports History)  
+   Since this is a Single page app - click a page won't refresh the site - it will simply replace the page main content with the new page content (that the client asks from the server)
+   **Switch** between dark/light mode.  
+   **Shrink button** - reduces the size of the bar.
 
 #### Packages, out source features and final notes
 
