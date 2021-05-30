@@ -1,12 +1,14 @@
 # Anomaly Detection Web Application
 
-This web application detects any irregularities - abnormal data resources and report back to the user - all through your client's browser. 
+A Single-Page Web Application, built using JavaScript for frontend and backend (Node.Js).
 
-It's target market is wide, and is not restricted only for analysts, for it's output is accessible and easy to read.
+In the app you can upload .csv files and detect any irregularities - abnormal data resources and report back to the user - all through the client's browser. 
 
-The app uses 2 csv files, one to register a normality, so we can detect what is not in line with this file's standard, and a second for the testing of the abnormalities.
-
-After providing a second csv file meant for testing any anomalies there might be, the user will be able to select which detect mode he wants to perform, and what is the threshold for a line to be considered 'anomaly'.
+In order to use the app you simply need:
+Node.Js installed
+Browser (or another http client)
+And 2 csv files (1st one for normal data, so we can detet the standarts, and a 2nd one for the testing of the abnormalities)
+That's All!
 
 ## Preview 
 
