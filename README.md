@@ -88,12 +88,11 @@ Without files or detection mode the program will not start. The user will be not
 ### Results - Anomalies, Tables & Report history
 
 Post-Analysis :
-
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode2.png?raw=true)
-
-First we have to distinguish between the finds, and information on screen :
-
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/historyReport.PNG?raw=true)
+<p align="center">
+  <img width="900" height="500" src="https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode2.png">
+</p>
+First we have to distinguish between the finds, and information on screen :  
+<img width="506"src="https://user-images.githubusercontent.com/35079630/120120830-a01f3b80-c1a8-11eb-81eb-006b5fb36499.png">  
 
 1) **The reports' history**
 can be seen on the lower-left side of the web app. This will be kept up-to-date with any report we might add, and we can traverse between the old and new reports at any given moment. It provides the follows :
@@ -111,7 +110,8 @@ When selecting a pair of features from this list - the graphs will be updated ac
 
 3) **Graphs**  
 <p align="center">
-  <img width="600" height="400" src="https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/valuesOnGraph.PNG">
+  <img width="600" height="300" src="https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/valuesOnGraph.PNG">
+  <img width="600" height="300" src="https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/linearAndAnomalies.PNG">
 </p>
 
 *Top graph* - displays train information (each row from .csv) of the 2 seleced features (from Explore Anomalies) (each feature has a differnt color)  
@@ -119,8 +119,6 @@ When selecting a pair of features from this list - the graphs will be updated ac
    - **Zoom** - You can zoom in/out to check points more cloesly. Just hover your cursor on said graph, and use  ``` MouseWheel Up/Down ``` and enjoy the view up close. You can also drag the cursor to a box shape, this will zoom the graph to the box.
    - **Tooltip** -  When hovering over a point, a tooltip pops up with the point value and label information.
    - **Disable/Enable** - You can disable a certein feature from the gaph by simply clicking it's squared colored label (top of the chart). That's makes it easier to watch one feature's behaviour along the graph.
-
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/linearAndAnomalies.PNG?raw=true)
 
 4) **Statistics**
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboardTop.PNG?raw=true)
@@ -131,12 +129,17 @@ at top of dashboard screen:
  - **Last report date** - data of last report.
 
 5) **Navigation bar**  
-   <img width="151" alt="MobileSupport" src="https://user-images.githubusercontent.com/35079630/120120612-f8edd480-c1a6-11eb-92a1-a7f991473aa1.png">  
-   **Pages** Links to Dashboard (homepage), Train table and Test Table. both tables store the same data as the .csv table (the tables content changes upon selecting different report item in Reports History)  
+   <img width="151" src="https://user-images.githubusercontent.com/35079630/120120612-f8edd480-c1a6-11eb-92a1-a7f991473aa1.png">  
+   **Pages** Links to Dashboard (homepage), Train table and Test Table.
    Since this is a Single page app - click a page won't refresh the site - it will simply replace the page main content with the new page content (that the client asks from the server)
    **Switch** between dark/light mode.  
    **Shrink button** - reduces the size of the bar.
-
+   
+5) **Tables - Train and Test**  
+   <img src="https://user-images.githubusercontent.com/35079630/120120721-cee8e200-c1a7-11eb-8cc1-9d3d99fd92bf.png">  
+   In each table page - there's a responsive view of the .csv data (the tables content changes upon selecting different report item in Reports History)  
+   Features: sort by column, search, go to a specifc page, change column width  
+   
 #### Packages, out source features and final notes
 
 
@@ -164,20 +167,14 @@ response from the server [javascript object] :
     ]
 }
 
-*dark-mode-switch* - set dark mode button, with SB Admin 2 4.0.5 (Theme) : 
-
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode.PNG?raw=true)
-
-Graphs - (1) *chart.js* - vivid graphs (2) *chartjs-plugin-zoom* - enable **zoom** in chart.js
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/graphs.png?raw=true)
-
+3rd party libraries:
+dark-mode-switch - enables the switch to dark mode button
+SB Admin 2 4.0.5 - theme
+Graphs - (1) *chart.js* - and (2) *chartjs-plugin-zoom* - enable **zoom** in chart.js
+Tables - grid.js
 jquery framework
-
 bootstrap - responsive site across different views
-
 bootstrap-select - upgraded select element
-
 font-awesome - icons
-
 Express - web application framework
 
