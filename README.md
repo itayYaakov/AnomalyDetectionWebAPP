@@ -11,8 +11,10 @@ And 2 csv files (1st one for normal data, so we can detet the standarts, and a 2
 That's All!
 
 ## Preview 
-
+Desktop:
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode.PNG?raw=true)
+Mobile support:
+<img width="1375" alt="MobileSupport" src="https://user-images.githubusercontent.com/35079630/120120046-aeb72400-c1a3-11eb-92b6-4ef58903e6ee.png">
 
 
 @@ need to ask for requirements - which installations (and check for their direct instructions)
