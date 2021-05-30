@@ -22,8 +22,6 @@ That's All!
 Before using this web app, and run the server for your clients, we will need the to install the following :
 
  - Node.js with the latest update through their [main website](https://nodejs.org/), and in linux through the terminal enter the ``` sudo apt install nodejs ``` command.
-   
- - @@ more requirements here~
  
 
 
@@ -60,7 +58,7 @@ To enter as the host, simply type 'localhost:8080' (or <host_ip>:8080 on other c
 
 In the webpage, we have the option to drag-and-drop the files we need to provide -
 
-1. Select the train file in your computer, and drag into the 'train csv' box. (Alternative - choose it with 'Browse file' option)
+1. Select the train file in your computer, and drag into the 'train csv' box. (Alternative - choose it by clicking 'Browse file' button)
    
    ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dragAndDropTrain.png?raw=true)
    
