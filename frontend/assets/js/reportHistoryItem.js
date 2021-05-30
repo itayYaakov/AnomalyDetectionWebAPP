@@ -3,6 +3,7 @@ var reportHistoryItem = function() {
 
     function init() {
         document.querySelector("#event-manager").addEventListener("newReport", (event) => {
+            clearList();
             updateReportsHistory();
         });
         updateReportsHistory();
@@ -92,14 +93,19 @@ var reportHistoryItem = function() {
         $("#statics-total-reports").text(total_reports);
     }
 
+    function clearList() {
+        let list = document.getElementById("reports_history");
+
+        while (list.firstChild) {
+            list.firstChild.remove();
+        }
+    }
+
     async function updateReportsHistory() {
         let list = document.getElementById("reports_history");
         let list_error = document.getElementById("reports_history_error");
 
 
-        while (list.firstChild) {
-            list.firstChild.remove();
-        }
 
         try {
             const response = await get("/reportsConfigHistory");
@@ -203,7 +209,6 @@ var reportHistoryItem = function() {
             showElementFlex(optionsHolderParent);
             optionsHolder.removeEventListener("change", setColumnsButtonActive);
             optionsHolder.addEventListener("change", setColumnsButtonActive);
-            console.log("Refresh");
             $(optionsHolder).selectpicker("refresh").trigger("change");
         } catch (error) {
             console.log(error);
@@ -241,7 +246,6 @@ async function setColumnsButtonActive(element) {
     const col_2 = selected_option.getAttribute("col_2");
     const id = sessionStorage.getItem("selectedId");
     if (id) {
-        console.log("Change A");
         createCharts(id, col_1, col_2);
     }
 }

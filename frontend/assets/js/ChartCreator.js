@@ -1,7 +1,3 @@
-chartFeatures;
-chartCorrelation;
-let color1 = getCssVariable('--material-color-cyan-400');
-let color2 = getCssVariable('--material-color-light-green-400');
 class ChartsCreator {
     static refreshCharts() {
         if (chartFeatures instanceof Chart) chartFeatures.update();
@@ -12,6 +8,11 @@ class ChartsCreator {
         const COLOR_ON_LIGHT_MODE = getCssVariable("--material-color-grey-300");
         return isDarkMode() ? COLOR_ON_DARK_MODE : COLOR_ON_LIGHT_MODE;
     }
+
+    static color1 = getCssVariable('--material-color-cyan-400');
+
+    static color2 = getCssVariable('--material-color-light-green-400');
+
     static scales = {
         x: {
             grid: {
@@ -267,8 +268,8 @@ async function createCharts(id, feature1, feature2) {
     const test = await getTest(id);
     let creator = new ChartsCreator(test, anomalies);
 
-    feature1Data = creator.createFeatureData(feature1, color1);
-    feature2Data = creator.createFeatureData(feature2, color2);
+    feature1Data = creator.createFeatureData(feature1, ChartsCreator.color1);
+    feature2Data = creator.createFeatureData(feature2, ChartsCreator.color2);
 
     featuresDatasets = creator.createFeaturesChart(feature1Data, feature2Data);
     chartCorrelationDatasets = creator.createCorrelationChart(feature1, feature2);

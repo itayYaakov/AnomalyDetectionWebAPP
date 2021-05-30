@@ -3,6 +3,13 @@ var formHandler = function() {
     let threshold;
 
     function init() {
+        if (document.getElementById("event-manager")) document.getElementById("event-manager").remove();
+        let event_manager = document.createElement('div');
+        event_manager.id = "event-manager";
+        event_manager.classList.add("d-none");
+        let wrapper = document.getElementById("wrapper");
+        wrapper.insertBefore(event_manager, wrapper.firstChild)
+
         button = document.getElementById("submit_request_btn");
         threshold = document.getElementById("threshold_range");
 
