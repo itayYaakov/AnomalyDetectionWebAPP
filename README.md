@@ -12,9 +12,12 @@ That's All!
 
 ## Preview 
 Desktop:
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dashboard_darkmode.PNG?raw=true)
+<img width="1920" alt="Screenshot 2021-05-31 000510" src="https://user-images.githubusercontent.com/35079630/120120094-e4f4a380-c1a3-11eb-9263-769d02df3f7d.png">
 Mobile support:
 <img width="1375" alt="MobileSupport" src="https://user-images.githubusercontent.com/35079630/120120046-aeb72400-c1a3-11eb-92b6-4ef58903e6ee.png">
+
+
+@@ need to ask for requirements - which installations (and check for their direct instructions)
 
 ### Requirements and installation
 
@@ -65,7 +68,7 @@ In the webpage, we have the option to drag-and-drop the files we need to provide
 
 ![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/dragAndDropTest.png?raw=true)
    
-3. Drag and select your desired threshold level - as the threshold level grows higher, the requirement for correlation gets more demanding. The default threshold is 0,7.
+3. Drag and select your desired threshold level - as the threshold level grows higher, the requirement for correlation gets more demanding. The default threshold is 0.7.
    
 4. Select your detection mode -
    
@@ -90,21 +93,19 @@ First we have to distinguish between the finds, and information on screen :
 1) **The reports' history**
 can be seen on the lower-left side of the web app. This will be kept up-to-date with any report we might add, and we can traverse between the old and new reports at any given moment. It provides the follows :
 
- - **Time stamp** - when did the analysis occur, and the time the server finished calculating its response.
+ - **Time stamp** - Timestamps for client sending request and client receiving response
    
- - **Algorithm & Threshold** - Algorithm being Regression (linear only), or Hybrid (both linear and circular approach), and the threshold, as received from the user.
+ - **Algorithm & Threshold** - The user selected Threshold and Algorithm (Regression (linear only), or Hybrid (linear & circle))
    
  - **File names**.
 
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/EXPLOREaNOMALIES.PNG?raw=true)
-
 2) **The Explore Anomalies section**
-
-above the history report, we can see the name of each feature and his significant other - his most correlated other feature. By pressing one of the options, we will be given information via graphs about the anomalies and the values of the said features.
-
-![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/valuesOnGraph.PNG?raw=true)
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/EXPLOREaNOMALIES.PNG?raw=true)
+A drop-down list of all the features that has a correlated feature. The small text specifies the other most correlated feature.
+When selecting a pair of features from this list - the graphs will be updated accordingly.
 
 3) **Graphs**
+![alt text](https://github.com/eladoni1/Pictures-for-WebAPP-Anomaly-Detector/blob/main/valuesOnGraph.PNG?raw=true)
 *Top graph* - displays train information (each row from .csv) of the 2 seleced features (from Explore Anomalies) (each feature has a differnt color)
 *Bottom graph* - displays combined train informationof the 2 seleced features, with all anomalies points in red.
    - **Zoom** - You can zoom in/out to check points more cloesly. Just hover your cursor on said graph, and use  ``` MouseWheel Up/Down ``` and enjoy the view up close. You can also drag the cursor to a box shape, this will zoom the graph to the box.
