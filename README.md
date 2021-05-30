@@ -167,14 +167,14 @@ response from the server [javascript object] :
     ]
 }
 
-3rd party libraries:
-dark-mode-switch - enables the switch to dark mode button
-SB Admin 2 4.0.5 - theme
-Graphs - (1) *chart.js* - and (2) *chartjs-plugin-zoom* - enable **zoom** in chart.js
-Tables - grid.js
-jquery framework
-bootstrap - responsive site across different views
-bootstrap-select - upgraded select element
-font-awesome - icons
-Express - web application framework
+3rd party libraries:  
+dark-mode-switch - enables the switch to dark mode button  
+SB Admin 2 4.0.5 - theme  
+Graphs - (1) *chart.js* - and (2) *chartjs-plugin-zoom* - enable **zoom** in chart.js  
+Tables - grid.js  
+jquery framework  
+bootstrap - responsive site across different views  
+bootstrap-select - upgraded select element  
+font-awesome - icons  
+Express - web application framework  
 
