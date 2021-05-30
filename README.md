@@ -27,7 +27,7 @@ Before using this web app, and run the server for your clients, we will need the
  
 
 
-Up next, we will have to download the .ZIP file of the app, and extract. Go to the [repository's webpage](https://github.com/itayYaakov/AnomalyDetectionWebAPP), and follow the instructions :
+Up next, clone this repository or download the .ZIP file of the app, and extract. Go to the [repository's webpage](https://github.com/itayYaakov/AnomalyDetectionWebAPP), and follow the instructions :
 
 1. Press the 'Code' tab, and press the 'download' button as shown below
 
@@ -49,9 +49,9 @@ The user will be then notified that the server is up and running.
 
 #### Connecting to the web app
 
-After the server is running, you can enter from any web browser -
+After the server is running, you could connect to the site via any browser on your netowrk (including mobile and other laptops) -
 
-To enter as the host, simply type 'localhost:8080' to enter the app. It will automatically redirect you to the '/dashboard' page.
+To enter as the host, simply type 'localhost:8080' (or <host_ip>:8080 on other clients) to enter the app. It will automatically redirect you to the homepage.
 
 
 #### File & Settings selection 
