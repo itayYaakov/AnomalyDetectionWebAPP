@@ -149,8 +149,9 @@ at top of dashboard screen:
       src="https://yt-embed.herokuapp.com/embed?v=xyScTK9mcMw" 
       style="width:100%;">
       </a>
-</div>
-##### Using the API through code
+</div>  
+
+#### Using the API through code
 
 The **httpRequests.log** file contains a detailed explanation on the API's requests and responses.
 If the host wishes to use the API through code, check it out and start detecting anomalies in your CSV files!
@@ -174,16 +175,16 @@ response from the server [javascript object] :
     ]
 }
 
-3rd party libraries:  
-dark-mode-switch - enables the switch to dark mode button  
-SB Admin 2 4.0.5 - theme  
-Graphs - (1) *chart.js* - and (2) *chartjs-plugin-zoom* - enable **zoom** in chart.js  
-Tables - grid.js  
-jquery framework  
-bootstrap - responsive site across different views  
-bootstrap-select - upgraded select element  
-font-awesome - icons  
-Express - web application framework  
+### 3rd party libraries
+    dark-mode-switch - enables the switch to dark mode button  
+    SB Admin 2 4.0.5 - theme  
+    Graphs - (1) *chart.js* - and (2) *chartjs-plugin-zoom* - enable **zoom** in chart.js  
+    Tables - grid.js  
+    jquery framework  
+    bootstrap - responsive site across different views  
+    bootstrap-select - upgraded select element  
+    font-awesome - icons  
+    Express - backend server
 
 
 
