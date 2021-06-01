@@ -142,9 +142,14 @@ at top of dashboard screen:
    
 #### Packages, out source features and final notes
 
-#### Project video
-[here](https://youtu.be/xyScTK9mcMw)
-
+#### Project video  
+<div align="center">
+      <a href="https://www.youtube.com/watch?v=xyScTK9mcMw">
+     <img 
+      src="https://yt-embed.herokuapp.com/embed?v=xyScTK9mcMw" 
+      style="width:100%;">
+      </a>
+</div>
 ##### Using the API through code
 
 The **httpRequests.log** file contains a detailed explanation on the API's requests and responses.
