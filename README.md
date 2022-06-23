@@ -22,8 +22,6 @@ Mobile support:
 
 
 
-@@ need to ask for requirements - which installations (and check for their direct instructions)
-
 ### Requirements and installation
 
 Before using this web app, and run the server for your clients, we will need the to install the following :
